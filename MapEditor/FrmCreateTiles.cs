@@ -30,6 +30,8 @@ namespace MapEditor
             get { return _tileset; }
             set { _tileset = value; }
         }
+
+        //dùng để trả về danh sách các rect được cắt cho mainfrm
         public List<ListViewItem> ListViewItems { get; set; }
 
 
@@ -141,16 +143,49 @@ namespace MapEditor
             {
                 if (w == 0)
                     return;
-                else w = Tileset.Image.Height / w;
+                else w = Tileset.Image.Width / w;
             }
             else
             {
                 w = 1;
             }
-            drawGridView(Tileset.Columns, w);
+            drawGridView(w, Tileset.Rows);
         }
 
-     
+        private void panel_tile_Paint(object sender, PaintEventArgs e)
+        {
+            if (Tileset.Image == null)
+                return;
+            _bufferedGraphics.Dispose();
+            _bufferedGraphics = _context.Allocate(_graphics, new Rectangle(Point.Empty, panel_tile.Size));
+            drawGridView(Tileset.Columns, Tileset.Rows);
+        }
+
+        //lưu các rectangle được cắt 
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            Rectangle rect = new Rectangle(0, 0, Tileset.Widthtile, Tileset.Heighttile);
+
+            for (int i = 0; i < Tileset.Rows; i++) 
+            {
+                for (int j = 0; j < Tileset.Columns; j++)
+                {
+                    rect.Location = new Point(j * rect.Width, i * rect.Height);
+
+                    this.Tileset.ListTiles.Add(
+                        new Tile(
+                            Tileset.Image,
+                            new Rectangle(rect.Location,new Size(rect.Size.Width - 1,rect.Size.Height - 1)),
+                            i * Tileset.Columns + j + 1
+                            )
+                        );
+                    this.ListViewItems.Add(
+                        new TileItem(Tileset.ListTiles.Last()
+                        ));
+                }
+            }
+
+        }
 
     }
 }

@@ -47,6 +47,7 @@
             this.panel_tile.Name = "panel_tile";
             this.panel_tile.Size = new System.Drawing.Size(490, 473);
             this.panel_tile.TabIndex = 13;
+            this.panel_tile.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_tile_Paint);
             // 
             // buttonOK
             // 
@@ -56,6 +57,7 @@
             this.buttonOK.TabIndex = 12;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // label_height
             // 
