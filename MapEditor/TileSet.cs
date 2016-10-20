@@ -129,5 +129,26 @@ namespace MapEditor
         }
 
         #endregion
+
+        #region METHODS
+
+        //lưu thông tin xuống file xml
+        //cách đọc và ghi xml file
+        //https://thanhcuong.wordpress.com/2011/01/17/d%E1%BB%8Dc-v-ghi-xml-v%E1%BB%9Bi-c-read-and-write-xml-with-c/
+        public static void Save(TileSet tileset, string filename)
+        {
+            XmlTextWriter wr = new XmlTextWriter();
+            wr.Formatting = Formatting.Indented;
+            wr.WriteStartDocument();
+            TileSet.Save(wr, tileset, filename);
+            wr.WriteEndDocument();
+            wr.Close();
+        }
+
+        public static void Save(XmlTextWriter writer, TileSet tileset, string filename)
+        { 
+
+        }
+        #endregion
     }
 }
