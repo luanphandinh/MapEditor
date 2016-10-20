@@ -138,7 +138,7 @@ namespace MapEditor
         
         public static void Save(TileSet tileset, string filename)
         {
-            XmlTextWriter wr = new XmlTextWriter();
+            XmlTextWriter wr = new XmlTextWriter(filename, Encoding.UTF8);
             wr.Formatting = Formatting.Indented;
             wr.WriteStartDocument();
             TileSet.Save(wr, tileset, filename);

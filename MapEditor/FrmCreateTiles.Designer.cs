@@ -82,6 +82,7 @@
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.Size = new System.Drawing.Size(100, 20);
             this.textBoxHeight.TabIndex = 9;
+            this.textBoxHeight.TextChanged += new System.EventHandler(this.textBoxHeight_TextChanged);
             // 
             // textBoxWidth
             // 
@@ -90,6 +91,7 @@
             this.textBoxWidth.Name = "textBoxWidth";
             this.textBoxWidth.Size = new System.Drawing.Size(100, 20);
             this.textBoxWidth.TabIndex = 8;
+            this.textBoxWidth.TextChanged += new System.EventHandler(this.textBoxWidth_TextChanged);
             // 
             // buttonBrowse
             // 
@@ -105,7 +107,6 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Title = "Chose Image TIles";
-            this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
             // FrmCreateTiles
             // 
