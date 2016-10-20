@@ -1,2 +1,3 @@
 c:\users\_l_\documents\visual studio 2013\Projects\MapEditor\MapEditor\bin\Debug\MapEditor.exe.config
 C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\bin\Debug\MapEditor.exe.config
+C:\Users\L\Documents\GitHub\MapEditor\MapEditor\bin\Debug\MapEditor.exe.config

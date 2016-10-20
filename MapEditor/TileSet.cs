@@ -199,6 +199,49 @@ namespace MapEditor
         private static void LOAD(XmlReader reader,string fileName)
         {
             TileSet tileSet = new TileSet();
+            //lấy columns rows widthtile và heighttile
+            tileSet.Columns = Int32.Parse(reader.GetAttribute("Columns"));
+            tileSet.Rows = Int32.Parse(reader.GetAttribute("Rows"));
+            tileSet.Widthtile = Int32.Parse(reader.GetAttribute("Widthtile"));
+            tileSet.Heighttile = Int32.Parse(reader.GetAttribute("Heighttile"));
+
+            //lấy filename
+            string imageFileName = reader.GetAttribute("FileName");
+            string relativepath = fileName.Substring(0, fileName.LastIndexOf('\\') + 1);  // +1 là dấu \ trong path
+            //cộng file name với đường dẫn
+            tileSet.Filename = relativepath + imageFileName;
+
+            if (System.IO.File.Exists(tileSet.Filename))
+            {
+                tileSet.Image = Image.FromFile(fileName);
+            }
+            else throw new Exception("");
+
+            //đọc tileSet
+            reader.ReadStartElement("TileSet");
+            while (reader.NodeType != XmlNodeType.EndElement || reader.Name != "TileSet")
+            {
+                reader.Read();
+                if (reader.IsStartElement())
+                {
+                    if (reader.IsStartElement("Tiles"))
+                    {
+                        reader.ReadStartElement("Tiles");
+                        while (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Tiles")
+                        {
+                            reader.Read();
+                            if (reader.IsStartElement("Tile"))
+                            {
+                                var tile = readTile(reader);
+                                tile.Image = tileSet.Image;
+                                tileSet.ListTiles.Add(tile);
+                            }
+                        }
+                        continue;
+                    }
+                }
+            }
+
         }
 
         private static Tile readTile(XmlReader reader) 
@@ -206,9 +249,9 @@ namespace MapEditor
             int id = Int32.Parse(reader.GetAttribute("Id"));
             string name = reader.GetAttribute("Name");
             Rectangle rect = Rectangle.Empty;
-            reader.ReadStartElement("Tile");
 
-            while (reader.NodeType != XmlNodeType.EndElement && reader.Name != "Tile")
+            reader.ReadStartElement("Tile");
+            while (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Tile")
             {
                 reader.Read();
 
