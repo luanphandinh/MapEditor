@@ -129,12 +129,13 @@ namespace MapEditor
         }
 
         #endregion
-
+        /////
         #region METHODS
-
         //lưu thông tin xuống file xml
         //cách đọc và ghi xml file
         //https://thanhcuong.wordpress.com/2011/01/17/d%E1%BB%8Dc-v-ghi-xml-v%E1%BB%9Bi-c-read-and-write-xml-with-c/
+        #region SAVE
+        
         public static void Save(TileSet tileset, string filename)
         {
             XmlTextWriter wr = new XmlTextWriter();
@@ -146,9 +147,86 @@ namespace MapEditor
         }
 
         public static void Save(XmlTextWriter writer, TileSet tileset, string filename)
-        { 
+        {
+            writer.WriteStartElement("TileSet");
+            {
+                writer.WriteAttributeString("Columns", tileset.Columns.ToString());
+                writer.WriteAttributeString("Rows", tileset.Rows.ToString());
+                writer.WriteAttributeString("Widthtile", tileset.Widthtile.ToString());
+                writer.WriteAttributeString("Heighttile", tileset.Heighttile.ToString());
+
+                //lưu fileName dưới dạng đường dẫn tuyệt đối 
+                string imageFileName = tileset.Filename.Substring(tileset.Filename.LastIndexOf(@"\") + 1);
+                //lưu imageFileName
+                writer.WriteAttributeString("FileName", imageFileName);
+
+                string imagefullpath = filename.Substring(0, filename.LastIndexOf('\\')) + @"\\" + imageFileName;
+                if (System.IO.File.Exists(imagefullpath) == false)
+                {
+                    System.IO.File.Copy(tileset.Filename, imagefullpath);
+                }
+
+                writer.WriteStartElement("Tiles");
+                {
+                    foreach (var tileItem in tileset.ListTiles)
+                    {
+                        writer.WriteStartElement("Tile");
+                        {
+                            writer.WriteAttributeString("Id", tileItem.Id.ToString());
+                            writer.WriteAttributeString("Name", tileItem.Name);
+                            writer.WriteStartElement("Rect");
+                            {
+                                writer.WriteAttributeString("X",tileItem.SrcRect.Top.ToString());
+                                writer.WriteAttributeString("Y", tileItem.SrcRect.Left.ToString());
+                                writer.WriteAttributeString("Width", tileItem.SrcRect.Width.ToString());
+                                writer.WriteAttributeString("Height", tileItem.SrcRect.Height.ToString());
+                                
+                            }
+                            writer.WriteEndElement();//rect
+                        }
+                        writer.WriteEndElement();//tile
+                    }
+                }
+                writer.WriteEndElement();///tiles
+            }
+            writer.WriteEndElement();//tielset
 
         }
+        #endregion
+
+        #region LOAD
+
+        private static void LOAD(XmlReader reader,string fileName)
+        {
+            TileSet tileSet = new TileSet();
+        }
+
+        private static Tile readTile(XmlReader reader) 
+        {
+            int id = Int32.Parse(reader.GetAttribute("Id"));
+            string name = reader.GetAttribute("Name");
+            Rectangle rect = Rectangle.Empty;
+            reader.ReadStartElement("Tile");
+
+            while (reader.NodeType != XmlNodeType.EndElement && reader.Name != "Tile")
+            {
+                reader.Read();
+
+                if (reader.IsStartElement("Rect"))
+                {
+                    rect.X = Int32.Parse(reader.GetAttribute("X"));
+                    rect.Y = Int32.Parse(reader.GetAttribute("Y"));
+                    rect.Width = Int32.Parse(reader.GetAttribute("Width"));
+                    rect.Height = Int32.Parse(reader.GetAttribute("Height"));
+                    continue;
+                }
+            }
+
+            Tile tile = new Tile(null, rect, id);
+            tile.Name = name;
+            return tile;
+        }
+        #endregion
         #endregion
     }
 }
