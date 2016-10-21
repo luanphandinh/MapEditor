@@ -15,6 +15,8 @@ namespace MapEditor
     {
         public static ApplicationSetttings Settings = new ApplicationSetttings();
 
+        MapController _mapController = new MapController();
+
         public FrmMain()
         {
             InitializeComponent();
@@ -25,6 +27,20 @@ namespace MapEditor
         private void Panel_Scroll(object sender, ScrollEventArgs e)
         {
             
+        }
+
+        private void creatTilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this._mapController.CreateTileSet();
+            if (this._mapController.TilesMap == null)
+                return;
+            if (this._mapController.TilesMap.TileSet == null)
+                return;
+            this.listView1.LargeImageList = _mapController.getImageList();
+
+            if (listView1.Items.Count > 0)
+                listView1.Items.Clear();
+            this.listView1.Items.AddRange(_mapController.getListViewItem().ToArray());
         }
         
     }

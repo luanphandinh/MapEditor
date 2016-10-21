@@ -10,7 +10,7 @@ namespace MapEditor
 {
     //lưu default settting cho mapeditor
     //http://putridparrot.com/blog/user-application-settings-using-applicationsettingsbase/
-    class ApplicationSetttings : ApplicationSettingsBase
+    public class ApplicationSetttings : ApplicationSettingsBase
     {
         [UserScopedSetting(),DefaultSettingValue("50, 50")]
         public Size TileSize

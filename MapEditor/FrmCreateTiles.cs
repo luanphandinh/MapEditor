@@ -170,6 +170,7 @@ namespace MapEditor
             {
                 for (int j = 0; j < Tileset.Columns; j++)
                 {
+                    //theo mà hình x sang ngang y hướng xuống
                     rect.Location = new Point(j * rect.Width, i * rect.Height);
 
                     this.Tileset.ListTiles.Add(
@@ -184,7 +185,8 @@ namespace MapEditor
                         ));
                 }
             }
-
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
         }
 
     }
