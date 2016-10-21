@@ -10,10 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+
 //chi tiết INotifyPropertyChanged, INotifyCollectionChanged
 //http://www.codeproject.com/Articles/42536/List-vs-ObservableCollection-vs-INotifyPropertyCha
 namespace MapEditor
 {
+    //Tilset là class quản lí các tile 
+    //image dùng để quản lí image được load từ DB sau đó gán cho từng Tile
+    //bao gồm 1 list các tile
+    //được sử dụng trong FrmCreatTiles để load imamge sau đó
+    //gán các giá trị id và name cho tile
+    //đưa các tile vào danh sách
+    
     //INotifyPropertyChanged cung cấp event PropertyChanged mỗi khi giá trị các properties của 
     //TileSet bị thay đổi và cập nhật lại UI
     class TileSet : INotifyPropertyChanged, INotifyCollectionChanged
@@ -176,11 +184,10 @@ namespace MapEditor
                             writer.WriteAttributeString("Name", tileItem.Name);
                             writer.WriteStartElement("Rect");
                             {
-                                writer.WriteAttributeString("X",tileItem.SrcRect.Top.ToString());
-                                writer.WriteAttributeString("Y", tileItem.SrcRect.Left.ToString());
+                                writer.WriteAttributeString("X",tileItem.SrcRect.X.ToString());
+                                writer.WriteAttributeString("Y", tileItem.SrcRect.Y.ToString());
                                 writer.WriteAttributeString("Width", tileItem.SrcRect.Width.ToString());
                                 writer.WriteAttributeString("Height", tileItem.SrcRect.Height.ToString());
-                                
                             }
                             writer.WriteEndElement();//rect
                         }
@@ -196,7 +203,7 @@ namespace MapEditor
 
         #region LOAD
 
-        private static void LOAD(XmlReader reader,string fileName)
+        public static TileSet Load(XmlReader reader,string fileName)
         {
             TileSet tileSet = new TileSet();
             //lấy columns rows widthtile và heighttile
@@ -210,12 +217,12 @@ namespace MapEditor
             string relativepath = fileName.Substring(0, fileName.LastIndexOf('\\') + 1);  // +1 là dấu \ trong path
             //cộng file name với đường dẫn
             tileSet.Filename = relativepath + imageFileName;
-
+            //tạo image
             if (System.IO.File.Exists(tileSet.Filename))
             {
-                tileSet.Image = Image.FromFile(fileName);
+                tileSet.Image = Image.FromFile(tileSet.Filename);
             }
-            else throw new Exception("");
+            else throw new Exception("Error Load Image");
 
             //đọc tileSet
             reader.ReadStartElement("TileSet");
@@ -241,7 +248,7 @@ namespace MapEditor
                     }
                 }
             }
-
+            return tileSet;
         }
 
         private static Tile readTile(XmlReader reader) 

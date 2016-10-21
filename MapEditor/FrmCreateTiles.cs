@@ -98,7 +98,7 @@ namespace MapEditor
                     );
             }
 
-            //vẻ đường kẻ dọc
+            //vẻ đường kẻ ngang
             float tileHeight = ((float)this.panel_tile.Height) / hcount;
             for (int i = 0; i < hcount; i++)
             {

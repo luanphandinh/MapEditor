@@ -16,7 +16,7 @@ namespace MapEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCreateTiles());
+            Application.Run(new FrmMain());
         }
     }
 }

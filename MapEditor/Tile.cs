@@ -7,6 +7,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+//Tile là class dùng để vẻ các ô vuông được cắt từ image tileSet
+//với id được đánh dấu từ trái sang phải ,trên xuống
+//name được gán bằng "tile_" + id
+//image tileSet là hình được dùng để cắt
+//srcRect là khu vực của tile theo hình vuông hay chữ nhật trên image TileSet
+
+
 namespace MapEditor
 {
     //INotifyPropertyChanged chỉ có duy nhất một thành viên là event mang tên PropertyChanged. 
