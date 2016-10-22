@@ -25,7 +25,7 @@ namespace MapEditor
         private Graphics _graphics;
         private BufferedGraphicsContext _context;
 
-        internal TileSet Tileset
+        public TileSet Tileset
         {
             get { return _tileset; }
             set { _tileset = value; }

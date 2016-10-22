@@ -20,7 +20,7 @@ namespace MapEditor
     //Khi định nghĩa một class để dùng cho binding,
     //cần kích hoạt event này trong setter cho mỗi property trong class đó.
     //https://msdn.microsoft.com/en-us/library/system.componentmodel.inotifypropertychanged(v=vs.110).aspx
-    class Tile : INotifyPropertyChanged
+    public class Tile : INotifyPropertyChanged
     {
         #region FIELDS_PROPERTIES
         //id cho tile

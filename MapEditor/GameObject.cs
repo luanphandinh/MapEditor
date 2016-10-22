@@ -16,7 +16,7 @@ using Wexman.Design;
  */
 namespace MapEditor
 {
-    class GameObject :INotifyPropertyChanged
+    public class GameObject :INotifyPropertyChanged
     {
         #region FILEDS
         //FIELDS

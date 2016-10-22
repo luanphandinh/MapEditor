@@ -12,7 +12,7 @@ namespace MapEditor
     //TilesMap là class dùng để quản lý map của game
     //bao gồm 1 ma trận 2 chiều để quản lý ID các tile
     //tileSet để load các tile
-    class TilesMap : INotifyPropertyChanged
+    public class TilesMap : INotifyPropertyChanged
     {
         //FIELDS
         //lưu trữ số dòng và cột của tileMap

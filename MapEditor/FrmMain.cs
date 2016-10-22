@@ -22,7 +22,7 @@ namespace MapEditor
         private TableLayoutPanel _tableLayout;
 
         //Map controller
-        MapController _mapController;
+        private MapController _mapController;
 
         //Để lưu đường dẫn tạm cho file xml
         //khi lưu nếu đường này rỗng thì mở dialog yêu cầu đường dẫn,ngược lại thì ta dùng đường dẫn này
@@ -136,7 +136,10 @@ namespace MapEditor
             if (this._mapController.TilesMap == null)
                 return;
             if (this._mapController.TilesMap.TileSet == null)
+            {
+                MessageBox.Show("Tilset NUll");
                 return;
+            }
             //Gán imageList cho ListView
             //với Image được đánh số từ 0 
             this.listView1.View = View.LargeIcon;
@@ -156,6 +159,9 @@ namespace MapEditor
             {
                 //Tạo TilesMap với columns và rows 
                 _mapController.TilesMap = new TilesMap(newMapFrm.Columns, newMapFrm.Rows);
+                
+                //_mapController.TilesMap.Columns = newMapFrm.Columns;
+                //_mapController.TilesMap.Rows = newMapFrm.Rows;
                 this.InitTableLayout();
                 //khởi tạo ObjectEditor
                 //Sẽ implementsau
@@ -197,8 +203,141 @@ namespace MapEditor
             //location là vị trí vẽ trên tableLayout
             Point location = new Point(tileSize.Width * selectedPoint.X, tileSize.Height * selectedPoint.Y);
             _mapController.DrawTile(location, _selectedTile);
+            this.enableSaveButton();
         }
 
 
+        private void disabeSaveButton()
+        {
+            this.saveMapToolStripMenuItem.Enabled = false;
+            //if(this.)
+        }
+
+        private void enableSaveButton()
+        {
+            this.saveMapToolStripMenuItem.Enabled = true;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+        #region Save and Load
+        //sử dụng khi đường dẫn mặc định ko hợp lệ hoặc rỗng
+        //yêu cầu người dùng lấy đường dẫn
+        private string saveAsDialog()
+        {
+            var fileDlg = new SaveFileDialog();
+            fileDlg.Filter = "XML Files (*xml) | *.xml";
+            var result = fileDlg.ShowDialog();
+            if (result != DialogResult.OK)
+                return String.Empty;
+            return fileDlg.FileName;
+        }
+
+        public void SaveAs()
+        {
+            string newPath = saveAsDialog();
+            if (!String.IsNullOrEmpty(newPath))
+            {
+                this._tilesetPath = newPath;
+            }
+            else
+                return;
+            Cursor.Current = Cursors.WaitCursor;
+            TilesMap.Save(_mapController.TilesMap, this._tilesetPath);
+            Cursor.Current = Cursors.Default;
+            this.disabeSaveButton();
+        }
+
+        public void Save()
+        {
+            if (String.IsNullOrEmpty(_tilesetPath))
+            {
+                string newPath = saveAsDialog();
+                if (!String.IsNullOrEmpty(newPath))
+                {
+                    this._tilesetPath = newPath;
+                }
+                else return;
+            }
+            
+            Cursor.Current = Cursors.WaitCursor;
+            TilesMap.Save(_mapController.TilesMap, this._tilesetPath);
+            Cursor.Current = Cursors.Default;
+            this.disabeSaveButton();
+        }
+
+        public void savePreviousTileMap()
+        {
+            if (!String.IsNullOrEmpty(_tilesetPath))
+            {
+                string name = _tilesetPath.Substring(_tilesetPath.LastIndexOf('\\'));
+                var result = MessageBox.Show(
+                    "Do you want to save " + name + " ? ",
+                    "Save TileSet", MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2,
+                    MessageBoxOptions.ServiceNotification
+                    );
+                if (result == DialogResult.OK)
+                {
+                    TilesMap.Save(_mapController.TilesMap, _tilesetPath);
+                }
+            }
+            _tilesetPath = String.Empty;
+        }
+
+        public void Load()
+        {
+            savePreviousTileMap();
+            var openDlg = new OpenFileDialog();
+            openDlg.Filter = "XML Files (*xml) | *.xml";
+            var result = openDlg.ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            Cursor.Current = Cursors.WaitCursor;
+            _mapController.TilesMap = TilesMap.Load(openDlg.FileName);
+            this._tilesetPath = openDlg.FileName;
+
+            listView1.LargeImageList = _mapController.getImageList();
+            listView1.Items.AddRange(_mapController.getListViewItem().ToArray());
+            this.InitTableLayout();
+            _mapController.Draw(getVisibleMap());
+            Cursor.Current = Cursors.Default;
+            this.disabeSaveButton();
+        }
+        #endregion
+
+        private void saveMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Save();
+        }
+
+        private void loadMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Load();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            FrmMain.Settings.PropertyChanged += (object s, PropertyChangedEventArgs property_event) =>
+                {
+                    if (this.Focused == true)
+                        this._mapController.Draw(getVisibleMap());
+                    if (_mapController.TilesMap != null)
+                    {
+                        MapController.MapSize = new Size(
+                            _mapController.TilesMap.Columns * FrmMain.Settings.TileSize.Width,
+                            _mapController.TilesMap.Rows * FrmMain.Settings.TileSize.Height
+                            );
+                        //var mapbound = 
+                    }
+                };
+        }
+
+        
     }
 }

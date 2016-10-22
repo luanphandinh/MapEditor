@@ -207,6 +207,7 @@
             this.loadMapToolStripMenuItem.Name = "loadMapToolStripMenuItem";
             this.loadMapToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.loadMapToolStripMenuItem.Text = "LoadMap";
+            this.loadMapToolStripMenuItem.Click += new System.EventHandler(this.loadMapToolStripMenuItem_Click);
             // 
             // saveMapToolStripMenuItem
             // 
@@ -214,6 +215,7 @@
             this.saveMapToolStripMenuItem.Name = "saveMapToolStripMenuItem";
             this.saveMapToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.saveMapToolStripMenuItem.Text = "SaveMap";
+            this.saveMapToolStripMenuItem.Click += new System.EventHandler(this.saveMapToolStripMenuItem_Click);
             // 
             // cloneToolStripMenuItem
             // 
@@ -225,7 +227,7 @@
             // 
             this.newMapToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.newMapToolStripMenuItem.Name = "newMapToolStripMenuItem";
-            this.newMapToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newMapToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.newMapToolStripMenuItem.Text = "New Map";
             this.newMapToolStripMenuItem.Click += new System.EventHandler(this.newMapToolStripMenuItem_Click);
             // 
@@ -233,7 +235,7 @@
             // 
             this.creatTilesToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.creatTilesToolStripMenuItem.Name = "creatTilesToolStripMenuItem";
-            this.creatTilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.creatTilesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.creatTilesToolStripMenuItem.Text = "Create Tiles...";
             this.creatTilesToolStripMenuItem.Click += new System.EventHandler(this.creatTilesToolStripMenuItem_Click);
             // 
@@ -273,6 +275,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "FrmMain";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ContextMenuListBox.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);

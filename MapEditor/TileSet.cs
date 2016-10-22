@@ -24,7 +24,7 @@ namespace MapEditor
     
     //INotifyPropertyChanged cung cấp event PropertyChanged mỗi khi giá trị các properties của 
     //TileSet bị thay đổi và cập nhật lại UI
-    class TileSet : INotifyPropertyChanged, INotifyCollectionChanged
+    public class TileSet : INotifyPropertyChanged, INotifyCollectionChanged
     {
         #region FIELDS_PROPERTIES
         ////FIELDS
@@ -58,7 +58,7 @@ namespace MapEditor
         public string Filename
         {
             get { return _filename; }
-            set { setProperty(ref _filename, value, "FileName"); }
+            set { this.setProperty(ref _filename, value, "FileName"); }
         }
 
         //Số cột của tileSet,file image
@@ -71,7 +71,7 @@ namespace MapEditor
         public int Rows
         {
             get { return _rows; }
-            set { setProperty(ref _rows, value, "Rows"); }
+            set { this.setProperty(ref _rows, value, "Rows"); }
         }
 
         public Image Image { get; set; }
