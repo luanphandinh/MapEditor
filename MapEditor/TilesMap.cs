@@ -25,6 +25,8 @@ namespace MapEditor
 
         //PROPERTIES
         #region PROPERTIES
+        public BindingList<GameObject> ListObject { get; set; }
+
         public TileSet TileSet
         {
             get { return _tileSet; }

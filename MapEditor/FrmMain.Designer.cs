@@ -224,14 +224,15 @@
             // 
             this.newMapToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.newMapToolStripMenuItem.Name = "newMapToolStripMenuItem";
-            this.newMapToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.newMapToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newMapToolStripMenuItem.Text = "New Map";
+            this.newMapToolStripMenuItem.Click += new System.EventHandler(this.newMapToolStripMenuItem_Click);
             // 
             // creatTilesToolStripMenuItem
             // 
             this.creatTilesToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.creatTilesToolStripMenuItem.Name = "creatTilesToolStripMenuItem";
-            this.creatTilesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.creatTilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.creatTilesToolStripMenuItem.Text = "Create Tiles...";
             this.creatTilesToolStripMenuItem.Click += new System.EventHandler(this.creatTilesToolStripMenuItem_Click);
             // 
