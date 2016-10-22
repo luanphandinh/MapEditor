@@ -61,12 +61,13 @@ namespace MapEditor
             set { setProperty(ref _filename, value, "FileName"); }
         }
 
+        //Số cột của tileSet,file image
         public int Columns
         {
             get { return _columns; }
             set { setProperty(ref _columns, value, "Columns"); }
         }
-
+        //Số hàng của tileSet,file image
         public int Rows
         {
             get { return _rows; }

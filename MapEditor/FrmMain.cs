@@ -63,22 +63,25 @@ namespace MapEditor
             else
             if (_mapController.TilesMap == null)
                 return;
+            //lấy số columns và rows từ Tilesmap để vẽ tableLayout
             int columns = this._mapController.TilesMap.Columns;
             int rows = this._mapController.TilesMap.Rows;
             _tableLayout = new TableLayoutPanel();
 
-            _tableLayout.ColumnCount = columns;
+            
             //khởi tạo ma trận index
             //khởi tạo cột
+            _tableLayout.ColumnCount = columns;
             Size tileSize = FrmMain.Settings.TileSize;
             
             for (int i = 0; i < columns; i++)
             {
-                var columnStyle = new RowStyle(SizeType.Absolute, tileSize.Width - 1);
+                var columnStyle = new ColumnStyle(SizeType.Absolute, tileSize.Width - 1);
                 _tableLayout.ColumnStyles.Add(columnStyle);
             }
 
             //khởi tạo dòng
+            _tableLayout.RowCount = rows;
             for (int i = 0; i < rows; i++)
             {
                 var rowStyle = new RowStyle(SizeType.Absolute, tileSize.Height - 1);
@@ -90,9 +93,42 @@ namespace MapEditor
             _tableLayout.Margin = new System.Windows.Forms.Padding(5);
             _tableLayout.Name = "map";
 
+            //gán các Event cho tableLayout
+            _tableLayout.AutoSize = true;
+            //event Paint
+            _tableLayout.Paint += _tableLayout_Paint;
+            //event MouseClick
+            _tableLayout.MouseClick += TableLayoutMouseClick;
+            //MouseDown
+            //MouseClick
 
+            //add tableLayout lên panel để hiển thị
+            this.splitContainer2.Panel1.Controls.Add(_tableLayout);
+            //this.splitContainer2.SplitterDistance = (int)(this.splitContainer2.Size.Height * 0.75);
+
+            
+            //khởi tạo graphics
+            _graphics = this._tableLayout.CreateGraphics();
+            var context =  BufferedGraphicsManager.Current;
+            context.MaximumBuffer = _tableLayout.Size + new Size(1, 1);
+            _bufferedGraphic = context.Allocate(_graphics, new Rectangle(Point.Empty, _tableLayout.Size));
+            this._mapController.Graphics = _bufferedGraphic.Graphics;
         }
 
+
+        public Rectangle getVisibleMap()
+        {
+            //lấy phần hiểu thị trên panel
+            var size = this.splitContainer2.Panel1.ClientSize;
+            //lấy điểm neo của màn hình khi scroll
+            Point location = new Point(
+                this.splitContainer2.Panel1.HorizontalScroll.Value,
+                this.splitContainer2.Panel1.VerticalScroll.Value
+                );
+            return new Rectangle(location, size);
+        }
+
+     
         #region mainmenu click events
         private void creatTilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -103,6 +139,7 @@ namespace MapEditor
                 return;
             //Gán imageList cho ListView
             //với Image được đánh số từ 0 
+            this.listView1.View = View.LargeIcon;
             this.listView1.LargeImageList = _mapController.getImageList();
 
             if (listView1.Items.Count > 0)
@@ -113,9 +150,55 @@ namespace MapEditor
 
         private void newMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var newMapFrm = new FrmNewMap();
+            var result = newMapFrm.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                //Tạo TilesMap với columns và rows 
+                _mapController.TilesMap = new TilesMap(newMapFrm.Columns, newMapFrm.Rows);
+                this.InitTableLayout();
+                //khởi tạo ObjectEditor
+                //Sẽ implementsau
+            }
         }
         #endregion
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((sender as ListView).SelectedItems.Count == 0)
+            {
+                _selectedTile = null;
+                return;
+            }
+            _selectedTile = ((sender as ListView).SelectedItems[0] as TileItem).Tile;
+        }
+
+        //hàm vẽ
+        private void _tableLayout_Paint(object sender, PaintEventArgs e)
+        {
+            _mapController.Draw(getVisibleMap());
+        }
+
+        private void TableLayoutMouseClick(object sender, MouseEventArgs e)
+        { 
+            //kiểm tra xem đang thao tác với object hay thao tác với 
+            //tile
+            if (_selectedTile == null)
+                return;
+            Size tileSize = FrmMain.Settings.TileSize;
+            //selected point là chỉ số của matrix
+            Point selectedPoint = new Point(e.X / tileSize.Width, e.Y / tileSize.Height);
+            if (selectedPoint.X >= _mapController.TilesMap.Columns)
+                return;
+            if (selectedPoint.Y >= _mapController.TilesMap.Rows)
+                return;
+            _mapController.TilesMap[selectedPoint.X, selectedPoint.Y] = _selectedTile.Id;
+
+            //location là vị trí vẽ trên tableLayout
+            Point location = new Point(tileSize.Width * selectedPoint.X, tileSize.Height * selectedPoint.Y);
+            _mapController.DrawTile(location, _selectedTile);
+        }
+
 
     }
 }

@@ -28,8 +28,9 @@ namespace MapEditor
         //tileMap
         private TilesMap _tilesMap;
 
-
         //PROPERTIES
+        //dùng để vẻ hình,lấy graphics từ tablelayout trên view 
+        //sau đó vẽ lên
         public Graphics Graphics
         {
             get { return _graphics; }
@@ -37,10 +38,12 @@ namespace MapEditor
         }
 
         
-
+        
         public TilesMap TilesMap
         {
             get { return _tilesMap; }
+            //Khi set TIle map hàm PropertyCHanged sẽ được gọi
+            //từ đó tính luôn MapSize mà ko cần phải gọi hàm để tính
             set 
             {
                 if (_tilesMap != value)
@@ -67,7 +70,8 @@ namespace MapEditor
         { 
         }
 
-        ///OPen FrmCreateTiles
+        ///OPen FrmCreateTiles,Sau khi tạo tileSet thì TileMap nhận TileSet 
+        ///từ FrmCreateTiles
         public void CreateTileSet()
         {
             var _createTileFrm = new FrmCreateTiles();
@@ -80,8 +84,8 @@ namespace MapEditor
                 {
                     this.TilesMap = new TilesMap(10, 10);
                     //gán TileSet của tile map sau khi craete từ Frm
-                    this.TilesMap.TileSet = _createTileFrm.Tileset;
                 }
+                this.TilesMap.TileSet = _createTileFrm.Tileset;
             }
         }
 
@@ -120,7 +124,7 @@ namespace MapEditor
         //https://msdn.microsoft.com/en-us/library/ms173171.aspx
         public event EventHandler Drawn;
 
-        protected void OnDrawn(EventArgs e)
+        protected void OnDraw(EventArgs e)
         {
             if (Drawn != null)
             {
@@ -140,8 +144,44 @@ namespace MapEditor
             if (this.TilesMap.TileSet == null)
                 return;
             var tileSize = FrmMain.Settings.TileSize;
+
+            //vẽ map từ i sang phải và j xuống dưới
+            //vì trên View ta sẽ scroll Map,nên chỉ vẻ những phần hiển thị 
+            //lấy Max từ index (visibleRectangle.X / tileSize.Width) - 1 
+            //vì nếu X tại vị trí 0 ,tức là ko có scroll sang ngang thì 
+            //ta sẽ vẽ từ index 0 trong TileSet với phép toán lấy Max mà ko 
+            //phải là lấy -1
+            int iBegin = Math.Max(visibleRectangle.X / tileSize.Width - 1, 0);
+            //tương tự iEnd chỉ vẽ được hết phần Width của màn hình
+            //được vẽ từ vị trí iBegin 
+            int iEnd = Math.Min(iBegin + visibleRectangle.Width / tileSize.Width + 2, TilesMap.Columns);
+            int jBegin = Math.Max(visibleRectangle.Y / tileSize.Height - 1, 0);
+            int jEnd = Math.Min(jBegin + visibleRectangle.Height / tileSize.Height + 2, TilesMap.Rows);
+
+            for (int i = iBegin; i < iEnd; i++)
+            {
+                for (int j = jBegin; j < jEnd; j++)
+                {
+                    Tile tile = TilesMap.TileSet.ListTiles.ToList().Find(t => t.Id == TilesMap[i, j]);
+                    if (tile == null)
+                        continue;
+
+                    tile.draw(
+                        Graphics,
+                        new Point(tileSize.Width * i,tileSize.Height * j),
+                        tileSize);
+                }
+            }
+            //perform vẽ Objects sẽ làm sau
+
+            OnDraw(null);
         }
 
+        public void DrawTile(Point map_coordinate,Tile tile)
+        {
+            tile.draw(this.Graphics, map_coordinate, FrmMain.Settings.TileSize);
+            OnDraw(null);
+        }
 
 
     }
