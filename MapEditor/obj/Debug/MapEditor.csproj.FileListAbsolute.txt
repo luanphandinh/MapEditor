@@ -19,3 +19,4 @@ C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\bin\Debug\MapEditor.exe
 C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\bin\Debug\MapEditor.pdb
 C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\obj\Debug\MapEditor.FrmMain.resources
 C:\Users\L\Documents\GitHub\MapEditor\MapEditor\obj\Debug\MapEditor.FrmMain.resources
+C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\bin\Debug\GenericDictionaryEditor.dll

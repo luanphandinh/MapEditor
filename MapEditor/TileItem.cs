@@ -18,7 +18,9 @@ namespace MapEditor
         }
 
         //base của listviewItem bao gồm tring text và imageIndex
-        //vì id của tile được lưu từ 1 nên imgae index sẽ lưu từ 0
+        //vì imageindex trên View được lưu từ index 0
+        //nên khi add id Image vào thì phải trừ 1 do idTile được lưu từ 1
+        //Name bằng tileName
         //gán tile = tile
         public TileItem(Tile tile)
             : base(tile.Name,tile.Id-1)

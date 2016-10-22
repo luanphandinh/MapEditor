@@ -82,18 +82,13 @@ namespace MapEditor
         }
 
         // Danh sách các đối số dùng để khởi tạo đối tượng, bao gồm cả Position.
-        [Editor(typeof(GenericDictionaryEditor<string, string>), typeof(UITypeEditor))]
-        [GenericDictionaryEditor(Title = "Parameters", KeyDisplayName = "Name", KeyDefaultProviderType = typeof(KeyDefault), ValueDefaultProviderType = typeof(ValueDefault), ValueDisplayName = "Value")]
-        public Dictionary<string, string> Parameters
-        {
-            get { return _parameters; }
-            set { _parameters = value; }
-        }
-        public Dictionary<string, string> Parameters
-        {
-            get { return _parameters; }
-            set { _parameters = value; }
-        }
+        //[Editor(typeof(GenericDictionaryEditor<string, string>), typeof(UITypeEditor))]
+        //[GenericDictionaryEditor(Title = "Parameters", KeyDisplayName = "Name", KeyDefaultProviderType = typeof(KeyDefault), ValueDefaultProviderType = typeof(ValueDefault), ValueDisplayName = "Value")]
+        //public Dictionary<string, string> Parameters
+        //{
+        //    get { return _parameters; }
+        //    set { _parameters = value; }
+        //}
 
         //Được sử dụng để thay đổi giá trị property của gameObject 
         //khi property đó được bind với UI và UI thay đổi giá trị
@@ -125,7 +120,7 @@ namespace MapEditor
         {
             this._initBound = rect;
         }
-
+        //worldHeigt là chiều cao của map
         public Rectangle GetInitBoundTransform(int worldheight)
         {
             return new Rectangle(

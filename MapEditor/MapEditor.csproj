@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GenericDictionaryEditor">
+      <HintPath>..\packages\GenDictEdit.1.1.0\lib\net20\GenericDictionaryEditor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,8 +63,10 @@
     </Compile>
     <Compile Include="GameObject.cs" />
     <Compile Include="MapController.cs" />
+    <Compile Include="ObjectEditor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QNode.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="TileItem.cs" />
     <Compile Include="TileSet.cs" />

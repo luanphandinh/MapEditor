@@ -79,6 +79,7 @@ namespace MapEditor
                 if(this.TilesMap == null)
                 {
                     this.TilesMap = new TilesMap(10, 10);
+                    //gán TileSet của tile map sau khi craete từ Frm
                     this.TilesMap.TileSet = _createTileFrm.Tileset;
                 }
             }
@@ -98,7 +99,7 @@ namespace MapEditor
             }
             return result;
         }
-        //lấy danh sách các tile để gán cho listView trên FrmMain
+        //lấy danh sách các image của tile để gán cho listView trên FrmMain
         public ImageList getImageList()
         {
             if (this.TilesMap == null)

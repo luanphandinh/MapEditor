@@ -36,10 +36,13 @@ namespace MapEditor
                 return;
             if (this._mapController.TilesMap.TileSet == null)
                 return;
+            //Gán imageList cho ListView
+            //với Image được đánh số từ 0 
             this.listView1.LargeImageList = _mapController.getImageList();
 
             if (listView1.Items.Count > 0)
                 listView1.Items.Clear();
+            //ListView Item được đưa vào Items của View
             this.listView1.Items.AddRange(_mapController.getListViewItem().ToArray());
         }
         

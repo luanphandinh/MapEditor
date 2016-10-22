@@ -124,10 +124,10 @@
             this.gameObjectproperty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gameObjectproperty.HelpVisible = false;
-            this.gameObjectproperty.Location = new System.Drawing.Point(222, 0);
+            this.gameObjectproperty.Location = new System.Drawing.Point(137, 0);
             this.gameObjectproperty.Name = "gameObjectproperty";
             this.gameObjectproperty.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
-            this.gameObjectproperty.Size = new System.Drawing.Size(551, 402);
+            this.gameObjectproperty.Size = new System.Drawing.Size(551, 140);
             this.gameObjectproperty.TabIndex = 1;
             // 
             // listBoxObject
@@ -140,7 +140,7 @@
             this.listBoxObject.ItemHeight = 17;
             this.listBoxObject.Location = new System.Drawing.Point(0, 0);
             this.listBoxObject.Name = "listBoxObject";
-            this.listBoxObject.Size = new System.Drawing.Size(549, 378);
+            this.listBoxObject.Size = new System.Drawing.Size(464, 106);
             this.listBoxObject.TabIndex = 0;
             // 
             // splitContainer2
@@ -160,7 +160,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gameObjectproperty);
             this.splitContainer2.Panel2.Controls.Add(this.listBoxObject);
-            this.splitContainer2.Size = new System.Drawing.Size(777, 716);
+            this.splitContainer2.Size = new System.Drawing.Size(692, 454);
             this.splitContainer2.SplitterDistance = 300;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -179,8 +179,8 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(957, 716);
-            this.splitContainer1.SplitterDistance = 176;
+            this.splitContainer1.Size = new System.Drawing.Size(957, 454);
+            this.splitContainer1.SplitterDistance = 261;
             this.splitContainer1.TabIndex = 3;
             // 
             // listView1
@@ -191,7 +191,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(176, 716);
+            this.listView1.Size = new System.Drawing.Size(261, 454);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -224,14 +224,14 @@
             // 
             this.newMapToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.newMapToolStripMenuItem.Name = "newMapToolStripMenuItem";
-            this.newMapToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newMapToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.newMapToolStripMenuItem.Text = "New Map";
             // 
             // creatTilesToolStripMenuItem
             // 
             this.creatTilesToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.creatTilesToolStripMenuItem.Name = "creatTilesToolStripMenuItem";
-            this.creatTilesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.creatTilesToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.creatTilesToolStripMenuItem.Text = "Create Tiles...";
             this.creatTilesToolStripMenuItem.Click += new System.EventHandler(this.creatTilesToolStripMenuItem_Click);
             // 
@@ -266,7 +266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 740);
+            this.ClientSize = new System.Drawing.Size(957, 478);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FrmMain";
