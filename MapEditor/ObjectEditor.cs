@@ -310,19 +310,7 @@ namespace MapEditor
             wr.WriteEndElement();//Objects
         }
 
-        public static void SaveQuadTree(QNode root,string path)
-        { 
-
-        }
-        //lưu quad tree
-        private static void Save(XmlTextWriter wr, QNode qnode, string path)
-        {
-            if (qnode == null)
-                return;
-            wr.WriteStartElement("QNode");
-            { }
-            wr.WriteEndElement();//Objects
-        }
+       
 
         //Load list game objects
         public static IList<GameObject> Load(XmlTextReader reader,string path)
@@ -413,6 +401,57 @@ namespace MapEditor
                 this.QuadTree.InitChild();
             }));
             thread.Start();
+        }
+
+        /// <summary>
+        /// lưu quadTree
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="path"></param>
+        public static void SaveQuadTree(QNode root, string path)
+        {
+            using (XmlTextWriter wr = new XmlTextWriter(path, Encoding.UTF8))
+            {
+                wr.Formatting = Formatting.Indented;
+                wr.WriteStartDocument();
+                Save(wr, root, path);
+                wr.WriteEndDocument();
+            }
+        }
+        //lưu quad tree
+        private static void Save(XmlTextWriter wr, QNode qnode, string path)
+        {
+            if (qnode == null)
+                return;
+            wr.WriteStartElement("QNode");
+            {
+                wr.WriteAttributeString("Id", qnode.Id.ToString());
+                wr.WriteAttributeString("Level", qnode.Level.ToString());
+                wr.WriteAttributeString("X", qnode.Bound.X.ToString());
+                wr.WriteAttributeString("Y", qnode.Bound.Y.ToString());
+                wr.WriteAttributeString("Width", qnode.Bound.Width.ToString());
+                wr.WriteAttributeString("Height", qnode.Bound.Height.ToString());
+                if (qnode.isLeaf() && qnode.ListObjects.Any())
+                {
+                    string str = String.Empty;
+                    foreach (var obj in qnode.ListObjects)
+                    {
+                        str += obj.Name + " ";
+                    }
+                    wr.WriteStartElement("Objects");
+                    wr.WriteString(str);
+                    wr.WriteEndElement();
+                }
+                else
+                {
+                    for (int i = 0; i < 4; i++) 
+                    {
+                        Save(wr, qnode.Childs[i], path);
+                    }
+                }
+
+            }
+            wr.WriteEndElement();//Objects
         }
 
     }//class
