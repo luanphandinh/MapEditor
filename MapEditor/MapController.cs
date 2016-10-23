@@ -37,7 +37,7 @@ namespace MapEditor
             set { _graphics = value; }
         }
 
-        
+        public ObjectEditor ObjectEditor { get; set; }
         
         public TilesMap TilesMap
         {
@@ -174,9 +174,55 @@ namespace MapEditor
             }
             //perform vẽ Objects sẽ làm sau
 
+            if (FrmMain.Settings.UseTransform == true)
+            {
+                int worldHeight = this.TilesMap.GetMapHeight();
+                if (this.ObjectEditor.QuadTree == null)
+                    this.ObjectEditor.Draw(Graphics, worldHeight);
+                else
+                    this.ObjectEditor.Draw(Graphics, visibleRectangle, worldHeight);
+            }
+            else
+            {
+                if (this.ObjectEditor.QuadTree == null)
+                    this.ObjectEditor.Draw(Graphics);
+                else this.ObjectEditor.Draw(Graphics, visibleRectangle);
+            }
+
+            _lastVisibleRect = visibleRectangle;
             OnDraw(null);
         }
 
+        public void InitObjectEditor()
+        {
+            ObjectEditor = new ObjectEditor(TilesMap.ListObject);
+            ObjectEditor.ListItem.ListChanged += ListItem_ListChanged;
+        }
+
+        private void ListItem_ListChanged(object sender, ListChangedEventArgs e)
+        { 
+            //nếu thêm item vào thì add gameObject_PropertyChanged cho item đó
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                (sender as BindingList<GameObject>).ElementAt(e.NewIndex).PropertyChanged += gameObject_PropertyChanged;
+            }
+            //vẽ lại  map khi add item
+            this.Draw(_lastVisibleRect);
+        }
+
+        private void gameObject_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        { 
+            if(this.Graphics != null)
+            {
+                //vẽ lại map mỗi khi item thay đổi property
+                this.Draw(_lastVisibleRect);
+            }
+        }
+        /// <summary>
+        /// Vẽ tile lên một tạo độ trên map
+        /// </summary>
+        /// <param name="map_coordinate"></param>
+        /// <param name="tile"></param>
         public void DrawTile(Point map_coordinate,Tile tile)
         {
             tile.draw(this.Graphics, map_coordinate, FrmMain.Settings.TileSize);

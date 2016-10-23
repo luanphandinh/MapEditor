@@ -256,7 +256,7 @@ namespace MapEditor
                 Height = halfHeight,
             };
             //SE
-            result[0] = new Rectangle()
+            result[1] = new Rectangle()
             {
                 X = this.Bound.X + halfWidth,
                 Y = this.Bound.Y,
@@ -264,7 +264,7 @@ namespace MapEditor
                 Height = halfHeight,
             };
             //NE
-            result[0] = new Rectangle()
+            result[2] = new Rectangle()
             {
                 X = this.Bound.X + halfWidth,
                 Y = this.Bound.Y + halfHeight,
@@ -272,7 +272,7 @@ namespace MapEditor
                 Height = halfHeight,
             };
             //NW
-            result[0] = new Rectangle()
+            result[3] = new Rectangle()
             {
                 X = this.Bound.X,
                 Y = this.Bound.Y + halfHeight,
@@ -305,33 +305,39 @@ namespace MapEditor
         //Lấy danh sách các đối tượng mà node của nó giao với hình chữ nhật rect,thông thường rect là khung màn hình
         public void getListObject(ref List<GameObject> return_listObject, Rectangle rect)
         {
-            //Nếu là node lá thì tiến hành kiểm tra chèn object vào return_list nếu ko thì bắt đầu kiểm tra con của nó
-            if (this.isLeaf())
+            //kiểm tra xem node này có chứa hay intersect với rect hay ko
+            if (this.isContains(rect) || this.isIntersect(rect) || rect.IntersectsWith(this.Bound))
             {
-                //Nếu return list có Object thì tiến hành kiểm tra từng phần tử xem có trùng ko,sau đó chèn vào
-                //Nếu return list rỗng thì chèn cả listObject vào
-                if (return_listObject.Any())
+                //Nếu là node lá thì tiến hành kiểm tra chèn object vào return_list nếu ko thì bắt đầu kiểm tra con của nó
+                if (this.isLeaf())
                 {
-                    foreach (var obj in this.ListObjects)
+                    //Nếu return list có Object thì tiến hành kiểm tra từng phần tử xem có trùng ko,sau đó chèn vào
+                    //Nếu return list rỗng thì chèn cả listObject vào
+                    if (return_listObject.Any())
                     {
-                        if (!return_listObject.Contains(obj))
+                        foreach (var obj in this.ListObjects)
                         {
-                            return_listObject.Add(obj);
+                            if (!return_listObject.Contains(obj))
+                            {
+                                return_listObject.Add(obj);
+                            }
                         }
+                    }
+                    else
+                    {
+                        return_listObject.AddRange(this.ListObjects);
                     }
                 }
                 else
                 {
-                    return_listObject.AddRange(this.ListObjects);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    _childs[i].getListObject(ref return_listObject, rect);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        _childs[i].getListObject(ref return_listObject, rect);
+                    }
                 }
             }
         }
+
+
     }
 }

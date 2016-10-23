@@ -100,8 +100,9 @@ namespace MapEditor
             //event MouseClick
             _tableLayout.MouseClick += TableLayoutMouseClick;
             //MouseDown
-            //MouseClick
-
+            _tableLayout.MouseDown += TableLayoutMouseDown;
+            //MouseUp
+            _tableLayout.MouseUp += TableLayoutMouseUp;
             //add tableLayout lên panel để hiển thị
             this.splitContainer2.Panel1.Controls.Add(_tableLayout);
             //this.splitContainer2.SplitterDistance = (int)(this.splitContainer2.Size.Height * 0.75);
@@ -115,6 +116,58 @@ namespace MapEditor
             this._mapController.Graphics = _bufferedGraphic.Graphics;
         }
 
+        #region TableLayout Events
+
+        private void TableLayoutMouseClick(object sender, MouseEventArgs e)
+        {
+            //kiểm tra xem đang thao tác với object hay thao tác với 
+            //tile
+            if (_selectedTile == null)
+                return;
+            Size tileSize = FrmMain.Settings.TileSize;
+            //selected point là chỉ số của matrix
+            Point selectedPoint = new Point(e.X / tileSize.Width, e.Y / tileSize.Height);
+            if (selectedPoint.X >= _mapController.TilesMap.Columns)
+                return;
+            if (selectedPoint.Y >= _mapController.TilesMap.Rows)
+                return;
+            _mapController.TilesMap[selectedPoint.X, selectedPoint.Y] = _selectedTile.Id;
+
+            //location là vị trí vẽ trên tableLayout
+            Point location = new Point(tileSize.Width * selectedPoint.X, tileSize.Height * selectedPoint.Y);
+            _mapController.DrawTile(location, _selectedTile);
+            this.enableSaveButton();
+        }
+
+        private void TableLayoutMouseDown(object sender, MouseEventArgs e)
+        {
+            if (FrmMain.Settings.UseTransform == true)
+            {
+                int height = _mapController.TilesMap.GetMapHeight();
+                this._mapController.ObjectEditor.MouseDown = new Point(e.Location.X, height - e.Location.Y);
+            }
+            else
+            {
+                this._mapController.ObjectEditor.MouseDown = e.Location;
+            }
+        }
+
+        private void TableLayoutMouseUp(object sender, MouseEventArgs e)
+        {
+            if (FrmMain.Settings.UseTransform == true)
+            {
+                int height = _mapController.TilesMap.GetMapHeight();
+                this._mapController.ObjectEditor.MouseUp = new Point(e.Location.X, height - e.Location.Y);
+            }
+            else
+            {
+                this._mapController.ObjectEditor.MouseUp = e.Location;
+            }
+
+            this._mapController.ObjectEditor.InitGameObject();
+            this.enableSaveButton();
+        }
+        #endregion
 
         public Rectangle getVisibleMap()
         {
@@ -184,28 +237,6 @@ namespace MapEditor
         {
             _mapController.Draw(getVisibleMap());
         }
-
-        private void TableLayoutMouseClick(object sender, MouseEventArgs e)
-        { 
-            //kiểm tra xem đang thao tác với object hay thao tác với 
-            //tile
-            if (_selectedTile == null)
-                return;
-            Size tileSize = FrmMain.Settings.TileSize;
-            //selected point là chỉ số của matrix
-            Point selectedPoint = new Point(e.X / tileSize.Width, e.Y / tileSize.Height);
-            if (selectedPoint.X >= _mapController.TilesMap.Columns)
-                return;
-            if (selectedPoint.Y >= _mapController.TilesMap.Rows)
-                return;
-            _mapController.TilesMap[selectedPoint.X, selectedPoint.Y] = _selectedTile.Id;
-
-            //location là vị trí vẽ trên tableLayout
-            Point location = new Point(tileSize.Width * selectedPoint.X, tileSize.Height * selectedPoint.Y);
-            _mapController.DrawTile(location, _selectedTile);
-            this.enableSaveButton();
-        }
-
 
         private void disabeSaveButton()
         {
@@ -321,22 +352,22 @@ namespace MapEditor
             this.Load();
         }
 
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            FrmMain.Settings.PropertyChanged += (object s, PropertyChangedEventArgs property_event) =>
-                {
-                    if (this.Focused == true)
-                        this._mapController.Draw(getVisibleMap());
-                    if (_mapController.TilesMap != null)
-                    {
-                        MapController.MapSize = new Size(
-                            _mapController.TilesMap.Columns * FrmMain.Settings.TileSize.Width,
-                            _mapController.TilesMap.Rows * FrmMain.Settings.TileSize.Height
-                            );
-                        //var mapbound = 
-                    }
-                };
-        }
+        //private void FrmMain_Load(object sender, EventArgs e)
+        //{
+        //    FrmMain.Settings.PropertyChanged += (object s, PropertyChangedEventArgs property_event) =>
+        //        {
+        //            if (this.Focused == true)
+        //                this._mapController.Draw(getVisibleMap());
+        //            if (_mapController.TilesMap != null)
+        //            {
+        //                MapController.MapSize = new Size(
+        //                    _mapController.TilesMap.Columns * FrmMain.Settings.TileSize.Width,
+        //                    _mapController.TilesMap.Rows * FrmMain.Settings.TileSize.Height
+        //                    );
+        //                //var mapbound = 
+        //            }
+        //        };
+        //}
 
         
     }

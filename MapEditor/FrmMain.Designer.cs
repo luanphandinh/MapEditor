@@ -121,26 +121,23 @@
             // 
             // gameObjectproperty
             // 
-            this.gameObjectproperty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gameObjectproperty.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameObjectproperty.HelpVisible = false;
-            this.gameObjectproperty.Location = new System.Drawing.Point(137, 0);
+            this.gameObjectproperty.Location = new System.Drawing.Point(276, 0);
             this.gameObjectproperty.Name = "gameObjectproperty";
             this.gameObjectproperty.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
-            this.gameObjectproperty.Size = new System.Drawing.Size(551, 140);
+            this.gameObjectproperty.Size = new System.Drawing.Size(628, 245);
             this.gameObjectproperty.TabIndex = 1;
             // 
             // listBoxObject
             // 
-            this.listBoxObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxObject.Dock = System.Windows.Forms.DockStyle.Left;
             this.listBoxObject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.listBoxObject.FormattingEnabled = true;
             this.listBoxObject.ItemHeight = 17;
             this.listBoxObject.Location = new System.Drawing.Point(0, 0);
             this.listBoxObject.Name = "listBoxObject";
-            this.listBoxObject.Size = new System.Drawing.Size(464, 106);
+            this.listBoxObject.Size = new System.Drawing.Size(276, 245);
             this.listBoxObject.TabIndex = 0;
             // 
             // splitContainer2
@@ -160,8 +157,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gameObjectproperty);
             this.splitContainer2.Panel2.Controls.Add(this.listBoxObject);
-            this.splitContainer2.Size = new System.Drawing.Size(692, 454);
-            this.splitContainer2.SplitterDistance = 300;
+            this.splitContainer2.Size = new System.Drawing.Size(904, 659);
+            this.splitContainer2.SplitterDistance = 410;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer1
@@ -179,8 +176,8 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(957, 454);
-            this.splitContainer1.SplitterDistance = 261;
+            this.splitContainer1.Size = new System.Drawing.Size(1151, 659);
+            this.splitContainer1.SplitterDistance = 243;
             this.splitContainer1.TabIndex = 3;
             // 
             // listView1
@@ -191,7 +188,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(261, 454);
+            this.listView1.Size = new System.Drawing.Size(243, 659);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -262,7 +259,7 @@
             this.exportQTreeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(957, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1151, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -270,12 +267,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 478);
+            this.ClientSize = new System.Drawing.Size(1151, 683);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FrmMain";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ContextMenuListBox.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);

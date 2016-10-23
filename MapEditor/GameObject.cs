@@ -26,7 +26,7 @@ namespace MapEditor
         private Image _image;
         //ứng với id trong game
         private int id;
-        //dùng để hiển thị trên listbox,ko quan tamam trong game
+        //dùng để hiển thị trên listbox,ko quan tâm trong game
         private string name;
         private Dictionary<string, string> _parameters;
         #endregion
