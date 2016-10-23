@@ -395,5 +395,25 @@ namespace MapEditor
             return obj;
         }
 
+        /// <summary>
+        /// Khởi tạo QuadTree
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="bound"></param>
+        public void InitQuadTree(int level, Rectangle bound)
+        { 
+            //lấy hình vuông dựa trên max kích thước của map
+            int edge = Math.Max(bound.Width, bound.Height);
+            bound.Size = new Size(edge, edge);
+
+            Thread thread = new Thread(new ThreadStart(() =>
+            {
+                this.QuadTree = new QNode(0, bound, null);
+                this.QuadTree.ListObjects = this.ListItem.ToList();
+                this.QuadTree.InitChild();
+            }));
+            thread.Start();
+        }
+
     }//class
 }//namespace
