@@ -252,5 +252,148 @@ namespace MapEditor
             }
         }
         
-    }
-}
+
+        //Save Object
+        public static void Save(XmlTextWriter wr, BindingList<GameObject> listObject, string path)
+        {
+            wr.WriteStartElement("Objects");
+            {
+                foreach (GameObject item in listObject)
+                {
+                    wr.WriteStartElement("Item");
+                    {
+                        wr.WriteAttributeString("Id", item.Id.ToString());
+                        wr.WriteAttributeString("Name", item.Name.ToString());
+                        wr.WriteAttributeString("X", item.InitBound.X.ToString());
+                        wr.WriteAttributeString("Y", item.InitBound.Y.ToString());
+                        wr.WriteAttributeString("Width", item.InitBound.Width.ToString());
+                        wr.WriteAttributeString("Height", item.InitBound.Height.ToString());
+
+                        //tạo thêm folder res để lưu image nếu object có image
+                        if (Directory.Exists("res"))
+                        {
+                            Directory.CreateDirectory("res");
+                        }
+                        if (item.Image != null)
+                        {
+                            item.Image.Save("res\\" + item.Name + ".png");
+                            wr.WriteAttributeString("Image", "res\\" + item.Name + ".png");
+                        }
+
+                        wr.WriteStartElement("ActiveBound");
+                        {
+                            wr.WriteAttributeString("X", item.ActiveBound.X.ToString());
+                            wr.WriteAttributeString("Y", item.ActiveBound.Y.ToString());
+                            wr.WriteAttributeString("Width", item.ActiveBound.Width.ToString());
+                            wr.WriteAttributeString("Height", item.ActiveBound.Height.ToString());
+                        }
+                        wr.WriteEndElement();//ActiveBound
+                        //lưu params
+                        if (item.Parameters.Any())
+                        {
+                            wr.WriteStartElement("Params");
+                            {
+                                foreach (KeyValuePair<string, string> elem in item.Parameters.ToList())
+                                {
+                                    wr.WriteStartElement("Elem");
+                                    wr.WriteAttributeString("Key", elem.Key);
+                                    wr.WriteAttributeString("Value", elem.Value);
+                                    wr.WriteEndElement();
+                                }
+                            }
+                            wr.WriteEndElement();
+                        }
+                    }
+                    wr.WriteEndElement();//Item
+                }
+            }
+            wr.WriteEndElement();//Objects
+        }
+
+        public static void SaveQuadTree(QNode root,string path)
+        { 
+
+        }
+        //lưu quad tree
+        private static void Save(XmlTextWriter wr, QNode qnode, string path)
+        {
+            if (qnode == null)
+                return;
+            wr.WriteStartElement("QNode");
+            { }
+            wr.WriteEndElement();//Objects
+        }
+
+        //Load list game objects
+        public static IList<GameObject> Load(XmlTextReader reader,string path)
+        { 
+            List<GameObject> listGameObject = new List<GameObject>();
+            reader.ReadStartElement("Objects");
+            while(reader.NodeType != XmlNodeType.EndElement || reader.Name != "Objects")
+            {
+                reader.Read();
+                if (reader.IsStartElement("Item"))
+                {
+                    GameObject _obj = readGameObject(reader);
+                    listGameObject.Add(_obj);
+                }
+            }
+            return listGameObject;
+        }
+
+        private static GameObject readGameObject(XmlTextReader reader)
+        {
+            GameObject obj = null;
+            int id = Int32.Parse(reader.GetAttribute("Id"));
+            string name = reader.GetAttribute("Name");
+            int x = Int32.Parse(reader.GetAttribute("X"));
+            int y = Int32.Parse(reader.GetAttribute("Y"));
+            int width = Int32.Parse(reader.GetAttribute("Width"));
+            int height = Int32.Parse(reader.GetAttribute("Height"));
+            string img = reader.GetAttribute("Image");
+            obj = new GameObject(x, y, width, height);
+            obj.Id = id;
+            obj.Name = name;
+            if (!String.IsNullOrEmpty(img))
+            { 
+                if(File.Exists(img))
+                {
+                    obj.Image = Image.FromFile(img);
+                }
+            }
+
+            //khi chưa đến end Element của Object
+            
+            while (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Item")
+            {
+                reader.Read();
+                if (reader.IsStartElement("ActiveBound"))
+                {
+                    x = Int32.Parse(reader.GetAttribute("X"));
+                    y = Int32.Parse(reader.GetAttribute("Y"));
+                    width = Int32.Parse(reader.GetAttribute("Width"));
+                    height = Int32.Parse(reader.GetAttribute("Height"));
+                    obj.ActiveBound = new Rectangle(x, y, width, height);
+                }
+                if (reader.IsStartElement("Params"))
+                {
+                    string key = String.Empty;
+                    string value = String.Empty;
+                    while (reader.NodeType != XmlNodeType.EndElement || reader.Name != "Params")
+                    {
+                        reader.Read();
+                        if (reader.IsStartElement("Elem"))
+                        {
+                            key = reader.GetAttribute("Key");
+                            value = reader.GetAttribute("Value");
+                            obj.Parameters.Add(key, value);
+                        }
+                    }
+                }
+            }
+
+            return obj;
+        }
+
+    }//class
+}//namespace

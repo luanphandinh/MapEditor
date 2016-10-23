@@ -186,7 +186,8 @@ namespace MapEditor
             {
                 if (this.ObjectEditor.QuadTree == null)
                     this.ObjectEditor.Draw(Graphics);
-                else this.ObjectEditor.Draw(Graphics, visibleRectangle);
+                else 
+                    this.ObjectEditor.Draw(Graphics, visibleRectangle);
             }
 
             _lastVisibleRect = visibleRectangle;

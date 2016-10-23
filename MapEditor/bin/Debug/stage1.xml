@@ -5,9 +5,9 @@
     <Row id="1">2	5	2	1	2	5	2	30	35	38	42	30	35	38	42	1	2	5	2	1	2	30	35	38	42	30	35	38	42	30	35	38	42	30	35	38	42	30	35	38	42	1	3	3	2	5	3	3	2	5	2	1	3	3	2	5	2	1	2	1	3	3	2	5	3	3	3	3	3	3	2	1	2	5	3	3	2	1	2	30	35	38	42	1	2	1	59	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	69	72	75	76	3	3	3	3	3	3	3	3</Row>
     <Row id="2">1	6	3	3	3	3	26	31	36	39	43	31	36	39	45	3	3	3	3	3	26	31	36	39	43	31	36	39	43	31	36	39	43	31	36	39	43	31	36	39	45	3	1	1	1	6	3	3	3	3	3	3	1	1	1	6	1	1	1	1	3	3	3	3	1	6	1	6	3	3	1	1	3	3	3	3	3	3	26	31	36	39	45	3	1	1	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	70	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	66	62	77	79	89	99	110	113	113	113</Row>
     <Row id="3">2	1	3	3	3	3	27	32	37	40	27	44	37	40	3	3	3	3	3	3	27	32	37	40	27	44	37	40	27	44	37	40	27	44	37	40	27	44	37	40	3	3	2	5	2	1	3	3	3	3	3	3	2	5	2	1	2	5	2	5	3	3	3	3	2	1	2	1	3	3	2	5	3	3	3	3	3	3	27	32	37	40	3	3	2	5	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	61	65	60	64	60	64	60	64	60	64	60	64	61	65	61	65	61	65	61	65	61	65	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	61	65	61	65	60	64	71	73	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	67	63	78	80	90	100	109	114	114	114</Row>
-    <Row id="4">3	3	9	16	10	24	16	33	9	16	16	33	9	16	9	16	16	24	16	24	16	24	16	33	9	16	16	24	16	24	16	33	16	33	9	16	16	24	16	24	9	16	16	24	16	24	16	33	3	3	1	6	3	3	3	3	9	16	16	24	16	24	16	24	16	33	3	3	3	3	3	3	3	3	9	16	16	24	16	24	16	24	16	24	16	33	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	60	64	60	64	60	64	60	64	60	64	11	18	11	18	11	18	11	18	11	18	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	11	18	11	18	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	81	91	100	109	112	112	112</Row>
-    <Row id="5">3	3	10	10	10	10	10	34	10	17	28	34	10	17	10	17	23	25	23	25	23	25	28	34	10	17	23	25	23	25	28	34	28	34	10	17	23	25	23	25	10	17	23	25	23	25	28	34	3	3	2	1	3	3	3	3	10	17	23	25	23	25	23	25	28	34	3	3	3	3	3	3	3	3	10	17	23	25	23	25	23	25	23	25	28	34	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	61	65	61	65	61	65	61	65	61	65	12	19	12	19	12	19	12	19	12	19	60	64	61	65	61	65	60	64	60	64	60	64	60	64	60	64	61	65	12	19	12	19	60	64	61	65	61	65	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	61	65	61	65	61	65	61	65	60	64	60	64	60	82	92	101	109	112	112	112</Row>
-    <Row id="6">3	3	11	18	11	11	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	3	3	3	3	3	3	3	3	11	18	11	18	11	18	11	18	11	18	3	3	3	3	3	3	3	3	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	11	18	11	18	11	18	11	18	11	18	11	18	11	18	13	20	13	20	13	20	13	20	60	64	11	18	11	18	60	64	60	64	60	64	60	64	60	64	11	18	11	18	13	20	60	64	11	18	11	18	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	11	18	11	18	11	18	11	18	60	64	60	64	60	83	93	102	109	112	112	112</Row>
+    <Row id="4">3	3	9	16	16	24	16	33	9	16	16	33	9	16	9	16	16	24	16	24	16	24	16	33	9	16	16	24	16	24	16	33	16	33	9	16	16	24	16	24	9	16	16	24	16	24	16	33	3	3	1	6	3	3	3	3	9	16	16	24	16	24	16	24	16	33	3	3	3	3	3	3	3	3	9	16	16	24	16	24	16	24	16	24	16	33	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	60	64	60	64	60	64	60	64	60	64	11	18	11	18	11	18	11	18	11	18	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	11	18	11	18	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	81	91	100	109	112	112	112</Row>
+    <Row id="5">3	3	10	17	23	25	28	34	10	17	28	34	10	17	10	17	23	25	23	25	23	25	28	34	10	17	23	25	23	25	28	34	28	34	10	17	23	25	23	25	10	17	23	25	23	25	28	34	3	3	2	1	3	3	3	3	10	17	23	25	23	25	23	25	28	34	3	3	3	3	3	3	3	3	10	17	23	25	23	25	23	25	23	25	28	34	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	61	65	61	65	61	65	61	65	61	65	12	19	12	19	12	19	12	19	12	19	60	64	61	65	61	65	60	64	60	64	60	64	60	64	60	64	61	65	12	19	12	19	60	64	61	65	61	65	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	61	65	61	65	61	65	61	65	60	64	60	64	60	82	92	101	109	112	112	112</Row>
+    <Row id="6">3	3	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	3	3	3	3	3	3	3	3	11	18	11	18	11	18	11	18	11	18	3	3	3	3	3	3	3	3	11	18	11	18	11	18	11	18	11	18	11	18	11	18	11	18	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	11	18	11	18	11	18	11	18	11	18	11	18	11	18	13	20	13	20	13	20	13	20	60	64	11	18	11	18	60	64	60	64	60	64	60	64	60	64	11	18	11	18	13	20	60	64	11	18	11	18	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	60	64	11	18	11	18	11	18	11	18	60	64	60	64	60	83	93	102	109	112	112	112</Row>
     <Row id="7">3	3	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	3	3	3	3	3	3	3	3	12	19	12	19	12	19	12	19	12	19	3	3	3	3	3	3	3	3	12	19	12	19	12	19	12	19	12	19	12	19	12	19	12	19	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	12	19	12	19	12	19	12	19	12	19	12	19	12	19	14	21	14	21	14	21	14	21	61	65	12	19	12	19	60	64	61	65	61	65	60	64	60	64	12	19	12	19	14	21	60	64	12	19	12	19	61	65	61	65	61	65	61	65	60	64	60	64	60	64	60	64	60	64	61	65	61	65	12	19	12	19	12	19	12	19	61	65	60	64	60	84	94	103	109	112	112	112</Row>
     <Row id="8">4	4	13	20	13	20	13	20	13	20	11	18	11	18	11	18	13	20	13	20	13	20	13	20	13	20	11	18	11	18	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	4	4	4	4	4	4	4	4	13	20	13	20	13	20	13	20	13	20	4	4	4	4	4	4	4	4	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	11	18	11	18	11	18	11	18	11	18	11	18	11	18	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	13	20	11	18	11	18	11	18	13	20	60	64	11	18	11	18	60	64	60	64	13	20	13	20	13	20	60	64	13	20	11	18	11	18	11	18	11	18	11	18	60	64	60	64	60	64	60	64	60	64	11	18	11	18	13	20	13	20	13	20	13	20	11	18	60	64	60	85	95	104	108	115	115	115</Row>
     <Row id="9">4	4	14	21	14	21	14	21	14	21	12	19	12	19	12	19	14	21	14	21	14	21	14	21	14	21	12	19	12	19	14	21	14	21	14	21	14	21	14	21	11	18	11	18	11	18	14	21	4	4	4	4	4	4	4	4	14	21	14	21	14	21	14	21	14	21	4	4	4	4	4	4	4	4	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	11	18	11	18	14	21	12	19	12	19	12	19	12	19	12	19	12	19	12	19	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	14	21	11	18	14	21	12	19	12	19	12	19	14	21	60	64	12	19	12	19	61	65	61	65	14	21	14	21	11	18	60	64	14	21	12	19	12	19	12	19	12	19	12	19	60	64	60	64	61	65	61	65	60	64	12	19	12	19	14	21	11	18	11	18	11	18	12	19	61	65	60	86	96	105	109	112	112	112</Row>
@@ -698,11 +698,218 @@
         <Elem Key="type" Value="1" />
       </Params>
     </Item>
+    <Item Id="6" Name="rifleMan1" X="624" Y="120" Width="32" Height="64">
+      <ActiveBound X="624" Y="120" Width="32" Height="64" />
+      <Params>
+        <Elem Key="status" Value="0" />
+      </Params>
+    </Item>
+    <Item Id="6" Name="rifleMan2" X="1280" Y="120" Width="32" Height="64">
+      <ActiveBound X="1280" Y="120" Width="32" Height="64" />
+    </Item>
+    <Item Id="11" Name="wallTurret1" X="2496" Y="192" Width="64" Height="64">
+      <ActiveBound X="2496" Y="192" Width="64" Height="64" />
+    </Item>
+    <Item Id="11" Name="wallTurret2" X="3264" Y="256" Width="64" Height="64">
+      <ActiveBound X="3264" Y="256" Width="64" Height="64" />
+    </Item>
+    <Item Id="11" Name="wallTurret3" X="3648" Y="256" Width="64" Height="64">
+      <ActiveBound X="3648" Y="256" Width="64" Height="64" />
+    </Item>
+    <Item Id="1" Name="redCannon1" X="4096" Y="192" Width="64" Height="64">
+      <ActiveBound X="4096" Y="192" Width="64" Height="64" />
+    </Item>
+    <Item Id="1" Name="redCannon2" X="4352" Y="384" Width="64" Height="64">
+      <ActiveBound X="4352" Y="384" Width="64" Height="64" />
+    </Item>
+    <Item Id="6" Name="rifleMan3" X="4736" Y="256" Width="32" Height="64">
+      <ActiveBound X="4736" Y="256" Width="32" Height="64" />
+    </Item>
+    <Item Id="1" Name="redCannon4" X="5504" Y="256" Width="64" Height="64">
+      <ActiveBound X="5504" Y="256" Width="64" Height="64" />
+    </Item>
+    <Item Id="11" Name="wallTurret4" X="5952" Y="128" Width="64" Height="64">
+      <ActiveBound X="5952" Y="128" Width="64" Height="64" />
+    </Item>
+    <Item Id="11" Name="wallTurret5" X="6208" Y="128" Width="64" Height="64">
+      <ActiveBound X="6208" Y="128" Width="64" Height="64" />
+    </Item>
+    <Item Id="4" Name="airCraft2" X="2176" Y="384" Width="64" Height="32">
+      <ActiveBound X="2176" Y="384" Width="1024" Height="200" />
+      <Params>
+        <Elem Key="type" Value="5" />
+      </Params>
+    </Item>
+    <Item Id="6" Name="rifleMan4" X="2496" Y="320" Width="32" Height="64">
+      <ActiveBound X="2496" Y="320" Width="32" Height="64" />
+    </Item>
+    <Item Id="4" Name="airCraft1" X="480" Y="384" Width="64" Height="32">
+      <ActiveBound X="480" Y="384" Width="1200" Height="200" />
+      <Params>
+        <Elem Key="type" Value="4" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="sodierCreator1" X="1280" Y="128" Width="64" Height="64">
+      <ActiveBound X="1216" Y="128" Width="128" Height="64" />
+      <Params>
+        <Elem Key="type" Value="2" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+      </Params>
+    </Item>
+    <Item Id="7" Name="bridge1" X="1536" Y="256" Width="256" Height="64">
+      <ActiveBound X="1536" Y="256" Width="256" Height="64" />
+    </Item>
+    <Item Id="7" Name="bridge2" X="2112" Y="256" Width="256" Height="64">
+      <ActiveBound X="2112" Y="256" Width="256" Height="64" />
+    </Item>
+    <Item Id="3" Name="falcon1" X="640" Y="192" Width="64" Height="64">
+      <ActiveBound X="640" Y="192" Width="64" Height="64" />
+      <Params>
+        <Elem Key="type" Value="3" />
+      </Params>
+    </Item>
+    <Item Id="3" Name="falcon2" X="3136" Y="192" Width="64" Height="64">
+      <ActiveBound X="3136" Y="192" Width="64" Height="64" />
+      <Params>
+        <Elem Key="type" Value="1" />
+      </Params>
+    </Item>
+    <Item Id="3" Name="falcon3" X="4544" Y="128" Width="64" Height="64">
+      <ActiveBound X="4544" Y="128" Width="64" Height="64" />
+      <Params>
+        <Elem Key="type" Value="5" />
+      </Params>
+    </Item>
+    <Item Id="4" Name="aircraft3" X="4640" Y="384" Width="64" Height="32">
+      <ActiveBound X="4640" Y="384" Width="1024" Height="192" />
+      <Params>
+        <Elem Key="type" Value="4" />
+      </Params>
+    </Item>
+    <Item Id="4" Name="aircraft4" X="4640" Y="192" Width="64" Height="32">
+      <ActiveBound X="4640" Y="192" Width="1024" Height="160" />
+      <Params>
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="6" Name="rifleMan5" X="2688" Y="310" Width="32" Height="54">
+      <ActiveBound X="2688" Y="320" Width="32" Height="64" />
+      <Params>
+        <Elem Key="status" Value="1048576" />
+      </Params>
+    </Item>
+    <Item Id="6" Name="rifleMan6" X="3072" Y="374" Width="32" Height="54">
+      <ActiveBound X="3072" Y="384" Width="32" Height="64" />
+      <Params>
+        <Elem Key="status" Value="1048576" />
+      </Params>
+    </Item>
+    <Item Id="18" Name="greatwall" X="6432" Y="384" Width="128" Height="320">
+      <ActiveBound X="6432" Y="384" Width="128" Height="320" />
+    </Item>
     <Item Id="12" Name="land40" X="6496" Y="96" Width="160" Height="5">
       <ActiveBound X="6496" Y="96" Width="160" Height="5" />
       <Params>
         <Elem Key="physicBodyDirection" Value="1" />
         <Elem Key="type" Value="0" />
+      </Params>
+    </Item>
+    <Item Id="2" Name="soldier2" X="640" Y="320" Width="64" Height="64">
+      <ActiveBound X="640" Y="320" Width="64" Height="64" />
+    </Item>
+    <Item Id="2" Name="soldier3" X="768" Y="320" Width="64" Height="64">
+      <ActiveBound X="768" Y="320" Width="64" Height="64" />
+    </Item>
+    <Item Id="13" Name="soldierCreator2" X="1152" Y="320" Width="64" Height="64">
+      <ActiveBound X="960" Y="320" Width="256" Height="64" />
+      <Params>
+        <Elem Key="type" Value="2" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="time" Value="3000" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator3" X="1536" Y="320" Width="64" Height="64">
+      <ActiveBound X="1344" Y="320" Width="256" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator4" X="2048" Y="320" Width="64" Height="64">
+      <ActiveBound X="1792" Y="320" Width="320" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator5" X="2880" Y="128" Width="64" Height="64">
+      <ActiveBound X="2816" Y="128" Width="128" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator6" X="2880" Y="384" Width="64" Height="64">
+      <ActiveBound X="2688" Y="384" Width="256" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator7" X="3580" Y="256" Width="64" Height="64">
+      <ActiveBound X="3200" Y="256" Width="444" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator8" X="3712" Y="384" Width="64" Height="64">
+      <ActiveBound X="3456" Y="384" Width="320" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator9" X="4284" Y="384" Width="64" Height="64">
+      <ActiveBound X="3840" Y="384" Width="508" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator10" X="5056" Y="384" Width="64" Height="64">
+      <ActiveBound X="4800" Y="384" Width="320" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
+      </Params>
+    </Item>
+    <Item Id="13" Name="soldierCreator11" X="6144" Y="320" Width="64" Height="64">
+      <ActiveBound X="5888" Y="320" Width="320" Height="64" />
+      <Params>
+        <Elem Key="time" Value="3000" />
+        <Elem Key="number" Value="-1" />
+        <Elem Key="direction" Value="-1" />
+        <Elem Key="type" Value="2" />
       </Params>
     </Item>
   </Objects>

@@ -135,7 +135,8 @@ namespace MapEditor
                         }
                         if (reader.Name == "Objects")
                         {
-                            //do somethings
+                            var listObject = ObjectEditor.Load(reader,path);
+                            tilesMap.ListObject = new BindingList<GameObject>(listObject);
                         }
                     }
                     if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Tilesmap")
@@ -185,6 +186,10 @@ namespace MapEditor
                             TileSet.Save(wr, tilesmap.TileSet, path);
                         }
                         //lưu object
+                        if (tilesmap.ListObject.Any())
+                        {
+                            ObjectEditor.Save(wr, tilesmap.ListObject, path);
+                        }
                     }
                     wr.WriteEndElement();//Tilesmap
                 }

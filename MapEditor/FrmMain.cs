@@ -266,6 +266,7 @@ namespace MapEditor
                 //_mapController.TilesMap.Columns = newMapFrm.Columns;
                 //_mapController.TilesMap.Rows = newMapFrm.Rows;
                 this.InitTableLayout();
+
                 //khởi tạo ObjectEditor
                 this._mapController.InitObjectEditor();
                 //Bind dữ liệu của ObjectEditor vào listBoxObject
@@ -382,9 +383,22 @@ namespace MapEditor
             listView1.LargeImageList = _mapController.getImageList();
             listView1.Items.AddRange(_mapController.getListViewItem().ToArray());
             this.InitTableLayout();
+
+            //Khởi tạo Object Editor
+            this._mapController.InitObjectEditor();
+            this._mapController.ObjectEditor.Bind(this.listBoxObject);
+            //this._mapController.ObjectEditor.ListItem.ListChanged += (object s,ListChangedEventArgs args) =>
+            //    {
+            //        this.enableSaveButton();
+            //        var map
+            //    }
+
+
             _mapController.Draw(getVisibleMap());
             Cursor.Current = Cursors.Default;
             this.disabeSaveButton();
+
+
         }
         #endregion
 
@@ -396,6 +410,10 @@ namespace MapEditor
         private void loadMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.LoadMap();
+            if (_mapController.TilesMap != null)
+            { 
+
+            }
         }
         #region xử lý trên listBoxObject và property
         private void listBoxObject_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,20 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Tilesmap columns="12" rows="12">
+<Tilesmap columns="32" rows="32">
   <MatrixIndex>
-    <Row id="0">0	0	0	0	0	0	0	0	0	0	0	0</Row>
-    <Row id="1">0	0	0	0	0	0	0	0	0	0	0	0</Row>
-    <Row id="2">0	0	0	0	0	4	0	4	4	0	0	0</Row>
-    <Row id="3">0	0	0	0	0	0	0	0	4	0	0	0</Row>
-    <Row id="4">0	0	0	0	0	0	4	4	4	0	0	0</Row>
-    <Row id="5">0	0	0	0	0	0	0	4	0	0	0	0</Row>
-    <Row id="6">0	0	0	0	0	0	0	0	0	0	0	0</Row>
-    <Row id="7">0	0	0	0	0	0	0	0	0	0	0	0</Row>
-    <Row id="8">0	0	0	0	0	0	0	0	0	0	0	0</Row>
-    <Row id="9">0	0	0	0	0	0	0	0	0	0	0	0</Row>
-    <Row id="10">0	0	0	0	0	0	0	0	0	0	0	0</Row>
-    <Row id="11">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="0">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="1">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="2">0	0	0	0	0	4	4	0	4	4	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="3">0	0	0	0	0	0	4	4	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="4">0	0	0	0	0	4	0	0	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="5">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="6">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="7">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="8">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="9">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="10">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="11">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="12">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="13">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="14">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="15">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="16">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="17">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="18">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="19">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="20">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="21">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="22">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="23">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="24">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="25">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="26">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="27">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="28">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="29">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="30">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="31">0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0</Row>
   </MatrixIndex>
-  <TileSet Columns="10" Rows="12" Widthtile="32" Heighttile="32" FileName="stage1.png">
+  <TileSet Columns="10" Rows="14" Widthtile="32" Heighttile="32" FileName="stage3.png">
     <Tiles>
       <Tile Id="1" Name="tile_1">
         <Rect X="0" Y="0" Width="31" Height="31" />
@@ -376,6 +396,77 @@
       <Tile Id="120" Name="tile_120">
         <Rect X="288" Y="352" Width="31" Height="31" />
       </Tile>
+      <Tile Id="121" Name="tile_121">
+        <Rect X="0" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="122" Name="tile_122">
+        <Rect X="32" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="123" Name="tile_123">
+        <Rect X="64" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="124" Name="tile_124">
+        <Rect X="96" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="125" Name="tile_125">
+        <Rect X="128" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="126" Name="tile_126">
+        <Rect X="160" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="127" Name="tile_127">
+        <Rect X="192" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="128" Name="tile_128">
+        <Rect X="224" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="129" Name="tile_129">
+        <Rect X="256" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="130" Name="tile_130">
+        <Rect X="288" Y="384" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="131" Name="tile_131">
+        <Rect X="0" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="132" Name="tile_132">
+        <Rect X="32" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="133" Name="tile_133">
+        <Rect X="64" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="134" Name="tile_134">
+        <Rect X="96" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="135" Name="tile_135">
+        <Rect X="128" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="136" Name="tile_136">
+        <Rect X="160" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="137" Name="tile_137">
+        <Rect X="192" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="138" Name="tile_138">
+        <Rect X="224" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="139" Name="tile_139">
+        <Rect X="256" Y="416" Width="31" Height="31" />
+      </Tile>
+      <Tile Id="140" Name="tile_140">
+        <Rect X="288" Y="416" Width="31" Height="31" />
+      </Tile>
     </Tiles>
   </TileSet>
+  <Objects>
+    <Item Id="0" Name="object0" X="10" Y="94" Width="74" Height="103">
+      <ActiveBound X="10" Y="94" Width="74" Height="103" />
+    </Item>
+    <Item Id="0" Name="object1" X="566" Y="216" Width="39" Height="57">
+      <ActiveBound X="566" Y="216" Width="39" Height="57" />
+    </Item>
+    <Item Id="0" Name="object2" X="598" Y="74" Width="247" Height="69">
+      <ActiveBound X="598" Y="74" Width="247" Height="69" />
+    </Item>
+  </Objects>
 </Tilesmap>
