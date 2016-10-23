@@ -24,6 +24,9 @@ namespace MapEditor
         //Map controller
         private MapController _mapController;
 
+        //ToolBar
+        private CustomToolBar _toolBar;
+
         //Để lưu đường dẫn tạm cho file xml
         //khi lưu nếu đường này rỗng thì mở dialog yêu cầu đường dẫn,ngược lại thì ta dùng đường dẫn này
         //khi load nếu path này rỗng thì mở dialog yêu cầu đường dẫn,ngược lại thì ta dùng đường dẫn này
@@ -42,9 +45,50 @@ namespace MapEditor
                 {
                     this._bufferedGraphic.Render(_graphics);
                 };
+            InitToolBar();
+            this.disabeSaveButton();
+            this.disableCreateTileButton();
         }
-            
-      
+
+        #region disable and enable
+        public void disableCreateTileButton()
+        {
+            this.creatTilesToolStripMenuItem.Enabled = false;
+        }
+
+        public void enableCreateTileButton()
+        {
+            this.creatTilesToolStripMenuItem.Enabled = true;
+        }
+
+        private void disabeSaveButton()
+        {
+            this.saveMapToolStripMenuItem.Enabled = false;
+            if (this._toolBar.Save != null)
+            {
+                _toolBar.Save.Enabled = false;
+            }
+            //if(this.)
+        }
+
+        private void enableSaveButton()
+        {
+            this.saveMapToolStripMenuItem.Enabled = true;
+            if (this._toolBar.Save != null)
+            {
+                _toolBar.Save.Enabled = false;
+            }
+        }
+        #endregion
+
+        //Khởi tạo toolbar
+        private void InitToolBar()
+        { 
+            this._toolBar = new CustomToolBar();
+            this._toolBar.Init();
+            this.Controls.Add(_toolBar);
+        }
+
         private void Panel_Scroll(object sender, ScrollEventArgs e)
         {
             
@@ -97,14 +141,15 @@ namespace MapEditor
             _tableLayout.AutoSize = true;
             //event Paint
             _tableLayout.Paint += _tableLayout_Paint;
+            //add tableLayout lên panel để hiển thị
+            this.splitContainer2.Panel1.Controls.Add(_tableLayout);
             //event MouseClick
             _tableLayout.MouseClick += TableLayoutMouseClick;
             //MouseDown
             _tableLayout.MouseDown += TableLayoutMouseDown;
             //MouseUp
             _tableLayout.MouseUp += TableLayoutMouseUp;
-            //add tableLayout lên panel để hiển thị
-            this.splitContainer2.Panel1.Controls.Add(_tableLayout);
+     
             //this.splitContainer2.SplitterDistance = (int)(this.splitContainer2.Size.Height * 0.75);
 
             
@@ -122,6 +167,8 @@ namespace MapEditor
         {
             //kiểm tra xem đang thao tác với object hay thao tác với 
             //tile
+            if (this._toolBar.Buttons["editstate"].Pushed)
+                return;
             if (_selectedTile == null)
                 return;
             Size tileSize = FrmMain.Settings.TileSize;
@@ -141,6 +188,8 @@ namespace MapEditor
 
         private void TableLayoutMouseDown(object sender, MouseEventArgs e)
         {
+            if (!this._toolBar.Buttons["editstate"].Pushed)
+                return;
             if (FrmMain.Settings.UseTransform == true)
             {
                 int height = _mapController.TilesMap.GetMapHeight();
@@ -202,6 +251,7 @@ namespace MapEditor
                 listView1.Items.Clear();
             //ListView Item được đưa vào Items của View
             this.listView1.Items.AddRange(_mapController.getListViewItem().ToArray());
+            this.disableCreateTileButton();
         }
 
         private void newMapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -217,8 +267,14 @@ namespace MapEditor
                 //_mapController.TilesMap.Rows = newMapFrm.Rows;
                 this.InitTableLayout();
                 //khởi tạo ObjectEditor
-                //Sẽ implementsau
+                this._mapController.InitObjectEditor();
+                //Bind dữ liệu của ObjectEditor vào listBoxObject
+                //các object sẽ được hiển thị bằng tên
+                this._mapController.ObjectEditor.Bind(this.listBoxObject);
             }
+            this._mapController.TilesMap.TileSet = null;
+            this.listView1.Clear();
+            this.enableCreateTileButton();
         }
         #endregion
 
@@ -238,16 +294,6 @@ namespace MapEditor
             _mapController.Draw(getVisibleMap());
         }
 
-        private void disabeSaveButton()
-        {
-            this.saveMapToolStripMenuItem.Enabled = false;
-            //if(this.)
-        }
-
-        private void enableSaveButton()
-        {
-            this.saveMapToolStripMenuItem.Enabled = true;
-        }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -319,7 +365,7 @@ namespace MapEditor
             _tilesetPath = String.Empty;
         }
 
-        public void Load()
+        public void LoadMap()
         {
             savePreviousTileMap();
             var openDlg = new OpenFileDialog();
@@ -349,9 +395,46 @@ namespace MapEditor
 
         private void loadMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Load();
+            this.LoadMap();
+        }
+        #region xử lý trên listBoxObject và property
+        private void listBoxObject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.gameObjectproperty.SelectedObject = ((sender as ListBox).SelectedItem as GameObject);
         }
 
+        private void gameObjectproperty_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            (this.listBoxObject.DataSource as BindingSource).ResetBindings(false);
+            this.enableSaveButton();
+        }
+
+        private void listBoxObject_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                listBoxObject.SelectedIndex = listBoxObject.IndexFromPoint(e.Location);
+                if (listBoxObject.SelectedIndex != -1)
+                {
+                    ContextMenuListBox.Show(listBoxObject.PointToScreen(e.Location));
+                }
+            }
+        }
+
+        private void ContextMenuListBox_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Text == "Delete")
+            {
+                var current = (listBoxObject.DataSource as BindingSource).Current as GameObject;
+                //this._mapController.ObjectEditor.QuadTree.removeObject(current);
+                (listBoxObject.DataSource as BindingSource).RemoveCurrent();
+            }
+            else if (e.ClickedItem.Text == "Fit Tile")
+            { 
+
+            }
+        }
+        #endregion
         //private void FrmMain_Load(object sender, EventArgs e)
         //{
         //    FrmMain.Settings.PropertyChanged += (object s, PropertyChangedEventArgs property_event) =>

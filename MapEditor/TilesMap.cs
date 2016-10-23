@@ -76,6 +76,7 @@ namespace MapEditor
             _mapSize = new Point(columns,rows);
             _matrixIndex = new int[columns, rows];
 
+            ListObject = new BindingList<GameObject>();
             _tileSet = null;
             MapController.MapSize = new Size(
                 _mapSize.X * FrmMain.Settings.TileSize.Width,

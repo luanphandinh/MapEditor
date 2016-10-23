@@ -1,8 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Tilesmap columns="12" rows="2">
+<Tilesmap columns="12" rows="12">
   <MatrixIndex>
-    <Row id="0">10	10	10	10	10	0	0	0	0	0	0	0</Row>
-    <Row id="1">12	12	12	12	12	12	12	12	12	12	12	12</Row>
+    <Row id="0">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="1">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="2">0	0	0	0	0	4	0	4	4	0	0	0</Row>
+    <Row id="3">0	0	0	0	0	0	0	0	4	0	0	0</Row>
+    <Row id="4">0	0	0	0	0	0	4	4	4	0	0	0</Row>
+    <Row id="5">0	0	0	0	0	0	0	4	0	0	0	0</Row>
+    <Row id="6">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="7">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="8">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="9">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="10">0	0	0	0	0	0	0	0	0	0	0	0</Row>
+    <Row id="11">0	0	0	0	0	0	0	0	0	0	0	0</Row>
   </MatrixIndex>
   <TileSet Columns="10" Rows="12" Widthtile="32" Heighttile="32" FileName="stage1.png">
     <Tiles>

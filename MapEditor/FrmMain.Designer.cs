@@ -85,6 +85,7 @@
             this.MenuItemImport});
             this.ContextMenuListBox.Name = "ContextMenuListBox";
             this.ContextMenuListBox.Size = new System.Drawing.Size(156, 70);
+            this.ContextMenuListBox.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ContextMenuListBox_ItemClicked);
             // 
             // MenuItemFitTile
             // 
@@ -126,8 +127,9 @@
             this.gameObjectproperty.Location = new System.Drawing.Point(276, 0);
             this.gameObjectproperty.Name = "gameObjectproperty";
             this.gameObjectproperty.PropertySort = System.Windows.Forms.PropertySort.Alphabetical;
-            this.gameObjectproperty.Size = new System.Drawing.Size(628, 245);
+            this.gameObjectproperty.Size = new System.Drawing.Size(629, 245);
             this.gameObjectproperty.TabIndex = 1;
+            this.gameObjectproperty.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.gameObjectproperty_PropertyValueChanged);
             // 
             // listBoxObject
             // 
@@ -139,6 +141,8 @@
             this.listBoxObject.Name = "listBoxObject";
             this.listBoxObject.Size = new System.Drawing.Size(276, 245);
             this.listBoxObject.TabIndex = 0;
+            this.listBoxObject.SelectedIndexChanged += new System.EventHandler(this.listBoxObject_SelectedIndexChanged);
+            this.listBoxObject.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxObject_MouseDown);
             // 
             // splitContainer2
             // 
@@ -157,7 +161,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gameObjectproperty);
             this.splitContainer2.Panel2.Controls.Add(this.listBoxObject);
-            this.splitContainer2.Size = new System.Drawing.Size(904, 659);
+            this.splitContainer2.Size = new System.Drawing.Size(905, 659);
             this.splitContainer2.SplitterDistance = 410;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -177,7 +181,7 @@
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1151, 659);
-            this.splitContainer1.SplitterDistance = 243;
+            this.splitContainer1.SplitterDistance = 242;
             this.splitContainer1.TabIndex = 3;
             // 
             // listView1
@@ -188,7 +192,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(243, 659);
+            this.listView1.Size = new System.Drawing.Size(242, 659);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);

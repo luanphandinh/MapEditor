@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSetttings.cs" />
+    <Compile Include="CustomToolBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
