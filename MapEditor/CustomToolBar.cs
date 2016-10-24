@@ -208,7 +208,6 @@ namespace MapEditor
             var mainform = (sender as ToolBar).FindForm() as FrmMain;
             if (e.Button.Pushed)
             {
-                mainform.ReDrawMap();
                 mainform.DrawQuadTree();
             }
             else

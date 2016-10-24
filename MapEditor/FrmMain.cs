@@ -283,6 +283,7 @@ namespace MapEditor
                 this._mapController.ObjectEditor.Bind(this.listBoxObject);
             }
             this._mapController.TilesMap.TileSet = null;
+            InitObjectEditor();
             this.listView1.Clear();
             this.enableCreateTileButton();
         }
@@ -388,23 +389,7 @@ namespace MapEditor
             listView1.LargeImageList = _mapController.getImageList();
             listView1.Items.AddRange(_mapController.getListViewItem().ToArray());
             this.InitTableLayout();
-
-            //Khởi tạo Object Editor
-            this._mapController.InitObjectEditor();
-            this._mapController.ObjectEditor.Bind(this.listBoxObject);
-            //nếu Add thêm Object vào 
-            this._mapController.ObjectEditor.ListItem.ListChanged += (object s, ListChangedEventArgs arg) =>
-                {
-                    this.enableSaveButton();
-                    var mapbound = new Rectangle(0, 0,
-                        this._mapController.TilesMap.GetMapWidth(),
-                        this._mapController.TilesMap.GetMapHeight());
-                    this._mapController.ObjectEditor.InitQuadTree(0, mapbound);
-                    _mapController.Draw(mapbound);
-                    if (_toolBar.QuadTree.Pushed)
-                        this._mapController.RenderQuadTree();
-                };
-
+            InitObjectEditor();
             _mapController.Draw(getVisibleMap());
             Cursor.Current = Cursors.Default;
             this.disabeSaveButton();
@@ -414,7 +399,21 @@ namespace MapEditor
 
         public void InitObjectEditor()
         {
-
+            //Khởi tạo Object Editor
+            this._mapController.InitObjectEditor();
+            this._mapController.ObjectEditor.Bind(this.listBoxObject);
+            //nếu Add thêm Object vào 
+            this._mapController.ObjectEditor.ListItem.ListChanged += (object s, ListChangedEventArgs arg) =>
+            {
+                this.enableSaveButton();
+                var mapbound = new Rectangle(0, 0,
+                    this._mapController.TilesMap.GetMapWidth(),
+                    this._mapController.TilesMap.GetMapHeight());
+                this._mapController.ObjectEditor.InitQuadTree(0, mapbound);
+                _mapController.Draw(mapbound);
+                if (_toolBar.QuadTree.Pushed)
+                    this._mapController.RenderQuadTree();
+            };
         }
         #endregion
 
@@ -427,6 +426,7 @@ namespace MapEditor
         {
             if (_mapController == null)
                 return;
+            _graphics.Clear(Color.White);
             this._mapController.Draw(this.getVisibleMap());
         }
 
