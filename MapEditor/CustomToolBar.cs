@@ -50,10 +50,10 @@ namespace MapEditor
                 {
                     this.buttonEditStateHandleClick(sender, e);
                 }
-                //else if (e.Button.Name == "appsettings")
-                //{
-                //    this.buttonAppSettingsHandleClick(sender, e);
-                //}
+                else if (e.Button.Name == "appsettings")
+                {
+                    this.buttonAppSettingsHandleClick(sender, e);
+                }
                 else if (e.Button.Name == "save")
                 {
                     this.buttonSaveHandleClick(sender, e);
@@ -66,10 +66,10 @@ namespace MapEditor
                 {
                     this.buttonOpenHandleClick(sender, e);
                 }
-                //else if (e.Button.Name == "quadtree")
-                //{
-                //    this.buttonQuadtreeHandleClick(sender, e);
-                //}
+                else if (e.Button.Name == "quadtree")
+                {
+                    this.buttonQuadtreeHandleClick(sender, e);
+                }
             };
         }
 
@@ -146,26 +146,26 @@ namespace MapEditor
         // Hàm xử lý sự kiện nút appsetting click
         // @return: true nếu form bấm nút ok
         //          false nếu form bấm nút cancel.
-        //private void buttonAppSettingsHandleClick(object sender, ToolBarButtonClickEventArgs e)
-        //{
-        //    AppSettingsForm form = new AppSettingsForm(MainForm.Settings);
-        //    DialogResult rs = form.ShowDialog();
-        //    if (rs == DialogResult.Cancel)
-        //    {
-        //        FrmMain.Settings.Reload();
-        //    }
-        //    else if (rs == DialogResult.OK)
-        //    {
-        //        FrmMain.Settings.Save();
-        //        var mainform = (sender as ToolBar).FindForm() as FrmMain;
-        //        mainform.InitTableLayout();
-        //        mainform.ReDrawMap();
-        //    }
-        //    else
-        //    {
-        //        FrmMain.Settings.Reload();
-        //    }
-        //}
+        private void buttonAppSettingsHandleClick(object sender, ToolBarButtonClickEventArgs e)
+        {
+            AppSettings form = new AppSettings(FrmMain.Settings);
+            DialogResult rs = form.ShowDialog();
+            if (rs == DialogResult.Cancel)
+            {
+                FrmMain.Settings.Reload();
+            }
+            else if (rs == DialogResult.OK)
+            {
+                FrmMain.Settings.Save();
+                var mainform = (sender as ToolBar).FindForm() as FrmMain;
+                mainform.InitTableLayout();
+                mainform.ReDrawMap();
+            }
+            else
+            {
+                FrmMain.Settings.Reload();
+            }
+        }
 
         // Hàm xử lý sự kiện nhấn nút EditState
         private void buttonEditStateHandleClick(object sender, ToolBarButtonClickEventArgs e)
@@ -203,17 +203,18 @@ namespace MapEditor
             mainform.Save();
         }
 
-        //private void buttonQuadtreeHandleClick(object sender, ToolBarButtonClickEventArgs e)
-        //{
-        //    var mainform = (sender as ToolBar).FindForm() as FrmMain;
-        //    if (e.Button.Pushed)
-        //    {
-        //        mainform.DrawQuadTree();
-        //    }
-        //    else
-        //    {
-        //        mainform.ReDrawMap();
-        //    }
-        //}
+        private void buttonQuadtreeHandleClick(object sender, ToolBarButtonClickEventArgs e)
+        {
+            var mainform = (sender as ToolBar).FindForm() as FrmMain;
+            if (e.Button.Pushed)
+            {
+                mainform.ReDrawMap();
+                mainform.DrawQuadTree();
+            }
+            else
+            {
+                mainform.ReDrawMap();
+            }
+        }
     }
 }

@@ -202,6 +202,7 @@
             this.exportQTreeToolStripMenuItem.Name = "exportQTreeToolStripMenuItem";
             this.exportQTreeToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.exportQTreeToolStripMenuItem.Text = "Export QTree";
+            this.exportQTreeToolStripMenuItem.Click += new System.EventHandler(this.exportQTreeToolStripMenuItem_Click);
             // 
             // loadMapToolStripMenuItem
             // 

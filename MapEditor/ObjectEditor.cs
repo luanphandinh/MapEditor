@@ -54,6 +54,11 @@ namespace MapEditor
             MouseDown = new Point(-1, -1);
         }
 
+        /// <summary>
+        /// Object Editor gọi hàm bind để bind với View
+        /// Danh sahcs sẽ hiển thị với Name
+        /// </summary>
+        /// <param name="listbox"></param>
         public void Bind(ListBox listBox)
         {
             BindingSource bs = new BindingSource(this,"ListItem");
@@ -63,10 +68,15 @@ namespace MapEditor
             listBox.DisplayMember = "Name";
             _listItem.ListChanged += (object sender, ListChangedEventArgs e) =>
                 {
+                    //reset lại data displayed in listboxview
                     (listBox.DataSource as BindingSource).ResetBindings(true);
                 };
         }
 
+        /// <summary>
+        /// Khởi tạo game object dựa trên giá trị mouseup và mousedown
+        /// gán gameObject vào ListObject
+        /// </summary>
         public void InitGameObject()
         {
             if (this.MouseDown.X == -1 && this.MouseDown.Y == -1)
@@ -94,6 +104,7 @@ namespace MapEditor
             //gán lại mousedowwn để vẽ object mới
             this.MouseDown = new Point(-1, -1);
         }
+        #region Draw
         /// <summary>
         /// Vẽ tất cả object
         /// </summary>
@@ -224,8 +235,9 @@ namespace MapEditor
                     GObject.ActiveBound.Y + 3);
             }
         }
-
-        public void RemderQuadTree(Graphics graphics)
+        #endregion
+        #region drawQuadTree
+        public void RenderQuadTree(Graphics graphics)
         {
             drawQuadTreeNode(this.QuadTree,graphics);
         }
@@ -251,8 +263,8 @@ namespace MapEditor
                 }
             }
         }
-        
-
+        #endregion
+        #region Save
         //Save Object
         public static void Save(XmlTextWriter wr, BindingList<GameObject> listObject, string path)
         {
@@ -310,8 +322,8 @@ namespace MapEditor
             wr.WriteEndElement();//Objects
         }
 
-       
-
+        #endregion
+        #region Load
         //Load list game objects
         public static IList<GameObject> Load(XmlTextReader reader,string path)
         { 
@@ -383,6 +395,8 @@ namespace MapEditor
             return obj;
         }
 
+        #endregion
+
         /// <summary>
         /// Khởi tạo QuadTree
         /// </summary>
@@ -392,12 +406,16 @@ namespace MapEditor
         { 
             //lấy hình vuông dựa trên max kích thước của map
             int edge = Math.Max(bound.Width, bound.Height);
+
             bound.Size = new Size(edge, edge);
 
             Thread thread = new Thread(new ThreadStart(() =>
             {
+                //tạo node gốc với level 0 và bound là edge * edge
                 this.QuadTree = new QNode(0, bound, null);
+                //gán listItems cho quadtree
                 this.QuadTree.ListObjects = this.ListItem.ToList();
+                //bắt đầu tạo các node con cho quadtree dựa trên listItem
                 this.QuadTree.InitChild();
             }));
             thread.Start();

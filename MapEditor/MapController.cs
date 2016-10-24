@@ -230,6 +230,16 @@ namespace MapEditor
             OnDraw(null);
         }
 
-
+        /// <summary>
+        /// vẽ quadTree
+        /// </summary>
+        public void RenderQuadTree()
+        {
+            if (this.ObjectEditor != null && this.Graphics != null)
+            {
+                this.ObjectEditor.RenderQuadTree(this.Graphics);
+                OnDraw(null);
+            }
+        }
     }
 }

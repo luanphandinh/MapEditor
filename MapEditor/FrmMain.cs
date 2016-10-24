@@ -162,6 +162,15 @@ namespace MapEditor
         }
 
         #region TableLayout Events
+        //hàm vẽ
+        private void _tableLayout_Paint(object sender, PaintEventArgs e)
+        {
+            _mapController.Draw(getVisibleMap());
+            if (this._toolBar != null && this._toolBar.QuadTree.Pushed)
+            {
+                this.DrawQuadTree();
+            }
+        }
 
         private void TableLayoutMouseClick(object sender, MouseEventArgs e)
         {
@@ -289,11 +298,7 @@ namespace MapEditor
             _selectedTile = ((sender as ListView).SelectedItems[0] as TileItem).Tile;
         }
 
-        //hàm vẽ
-        private void _tableLayout_Paint(object sender, PaintEventArgs e)
-        {
-            _mapController.Draw(getVisibleMap());
-        }
+        
 
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -387,12 +392,18 @@ namespace MapEditor
             //Khởi tạo Object Editor
             this._mapController.InitObjectEditor();
             this._mapController.ObjectEditor.Bind(this.listBoxObject);
-            //this._mapController.ObjectEditor.ListItem.ListChanged += (object s,ListChangedEventArgs args) =>
-            //    {
-            //        this.enableSaveButton();
-            //        var map
-            //    }
-
+            //nếu Add thêm Object vào 
+            this._mapController.ObjectEditor.ListItem.ListChanged += (object s, ListChangedEventArgs arg) =>
+                {
+                    this.enableSaveButton();
+                    var mapbound = new Rectangle(0, 0,
+                        this._mapController.TilesMap.GetMapWidth(),
+                        this._mapController.TilesMap.GetMapHeight());
+                    this._mapController.ObjectEditor.InitQuadTree(0, mapbound);
+                    _mapController.Draw(mapbound);
+                    if (_toolBar.QuadTree.Pushed)
+                        this._mapController.RenderQuadTree();
+                };
 
             _mapController.Draw(getVisibleMap());
             Cursor.Current = Cursors.Default;
@@ -400,7 +411,24 @@ namespace MapEditor
 
 
         }
+
+        public void InitObjectEditor()
+        {
+
+        }
         #endregion
+
+        public void DrawQuadTree()
+        {
+            this._mapController.RenderQuadTree();
+        }
+
+        public void ReDrawMap()
+        {
+            if (_mapController == null)
+                return;
+            this._mapController.Draw(this.getVisibleMap());
+        }
 
         private void saveMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -410,9 +438,13 @@ namespace MapEditor
         private void loadMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.LoadMap();
+            //khởi tạo QuadTree
             if (_mapController.TilesMap != null)
-            { 
-
+            {
+                var mapbound = new Rectangle(0, 0,
+                    this._mapController.TilesMap.GetMapWidth(),
+                    this._mapController.TilesMap.GetMapHeight());
+                this._mapController.ObjectEditor.InitQuadTree(0, mapbound);
             }
         }
         #region xử lý trên listBoxObject và property
@@ -453,22 +485,47 @@ namespace MapEditor
             }
         }
         #endregion
-        //private void FrmMain_Load(object sender, EventArgs e)
-        //{
-        //    FrmMain.Settings.PropertyChanged += (object s, PropertyChangedEventArgs property_event) =>
-        //        {
-        //            if (this.Focused == true)
-        //                this._mapController.Draw(getVisibleMap());
-        //            if (_mapController.TilesMap != null)
-        //            {
-        //                MapController.MapSize = new Size(
-        //                    _mapController.TilesMap.Columns * FrmMain.Settings.TileSize.Width,
-        //                    _mapController.TilesMap.Rows * FrmMain.Settings.TileSize.Height
-        //                    );
-        //                //var mapbound = 
-        //            }
-        //        };
-        //}
+
+        private void exportQTreeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportQuadTree();
+        }
+
+        private void ExportQuadTree()
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "XML Files(*,xml) | *.xml";
+            DialogResult result = dlg.ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            string fileName = dlg.FileName;
+            Cursor.Current = Cursors.WaitCursor;
+            ObjectEditor.SaveQuadTree(this._mapController.ObjectEditor.QuadTree, fileName);
+            Cursor.Current = Cursors.Default;
+        }
+
+        //Mỗi khi setting thay đổi thì tính lại mapsize và quadtree
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            FrmMain.Settings.PropertyChanged += (object s, PropertyChangedEventArgs property_event) =>
+                {
+                    if (this.Focused == true)
+                        this._mapController.Draw(getVisibleMap());
+                    if (_mapController.TilesMap != null)
+                    {
+                        MapController.MapSize = new Size(
+                            _mapController.TilesMap.Columns * FrmMain.Settings.TileSize.Width,
+                            _mapController.TilesMap.Rows * FrmMain.Settings.TileSize.Height
+                            );
+                        var mapbound = new Rectangle(0, 0,
+                               this._mapController.TilesMap.GetMapWidth(),
+                               this._mapController.TilesMap.GetMapHeight());
+                        this._mapController.ObjectEditor.InitQuadTree(0, mapbound);
+                    }
+                };
+        }
 
         
     }

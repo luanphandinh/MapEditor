@@ -153,6 +153,8 @@ namespace MapEditor
             {
                 foreach(GameObject gameObj in this.ListObjects)
                 {
+                    //kiểm tra xem object có giao hay nằm trong bound của child hay ko
+                    //sau đó insert object vào listOBject
                     Childs[i].insertObject(gameObj);
                 }
             }
@@ -170,20 +172,27 @@ namespace MapEditor
         //Tạo id
         public static void GenerateId(QNode parent)
         {
-            //Nếu là NULL thì SW sẽ là 0000
-            //Giả sử id là 0100 là phần tư thứ 2 bên phải 
+            /// _________________
+            /// |       |       |
+            /// |  SW   |   SE  |
+            /// |_______|_______|
+            /// |       |       |
+            /// |  NW   |  NE   |
+            /// |_______|_______|
+            //vd1.Nếu là NULL thì SW sẽ là 0000
+            //vd2.Giả sử id là 0100 là phần tư thứ 2 bên phải 
             parent.SW.Id = parent.Id;
-            //Lv là 0 thì offset là 2
-            //Lv là 1 thì offset là 2 << 1 = 4
+            //vd1.Lv là 0 thì offset là 2
+            //vd2.Lv là 1 thì offset là 2 << 1 = 4
             int offset = 2 << parent.Level;
-            //1 << 2 = 0100 | 0000 = 0100
-            //1 << 4 = 0001 0000 | 0000 0100 = 0001 0100
+            //vd1.1 << 2 = 0100 | 0000 = 0100
+            //vd2.1 << 4 = 0001 0000 | 0000 0100 = 0001 0100
             parent.SE.Id = Convert.ToInt64(1 << offset) | parent.Id;
-            //1 << 3 = 1000 | 0000 = 1000
-            //1 << 5 = 0010 0000 | 0000 0100 = 0010 0100
+            //vd1.1 << 3 = 1000 | 0000 = 1000
+            //vd2.1 << 5 = 0010 0000 | 0000 0100 = 0010 0100
             parent.NW.Id = Convert.ToInt64(1 << (offset + 1)) | parent.Id;
-            //0100 | 1000 = 1100
-            // 0001 0100 | 0010 0100 = 0011 0100
+            //vd1.0100 | 1000 = 1100
+            //vd2. 0001 0100 | 0010 0100 = 0011 0100
             parent.NE.Id = parent.SE.Id | parent.NW.Id;
         }
 
@@ -241,8 +250,6 @@ namespace MapEditor
         public Rectangle[] devideBound()
         {
             Rectangle[] result = new Rectangle[4];
-            return result;
-
             //dịch sang bit sang phải để chia đôi
             int halfWidth = this.Bound.Width >> 1;
             int halfHeight = this.Bound.Height >> 1;

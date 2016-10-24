@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSetttings.cs" />
+    <Compile Include="AppSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppSettings.Designer.cs">
+      <DependentUpon>AppSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomToolBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="TileItem.cs" />
     <Compile Include="TileSet.cs" />
     <Compile Include="TilesMap.cs" />
+    <EmbeddedResource Include="AppSettings.resx">
+      <DependentUpon>AppSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateTiles.resx">
       <DependentUpon>FrmCreateTiles.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +108,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

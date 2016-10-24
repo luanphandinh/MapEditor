@@ -22,3 +22,5 @@ C:\Users\L\Documents\GitHub\MapEditor\MapEditor\obj\Debug\MapEditor.FrmMain.reso
 C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\bin\Debug\GenericDictionaryEditor.dll
 C:\Users\L\Documents\GitHub\MapEditor\MapEditor\bin\Debug\GenericDictionaryEditor.dll
 C:\Users\L\Documents\GitHub\MapEditor\MapEditor\obj\Debug\MapEditor.FrmNewMap.resources
+C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\obj\Debug\MapEditor.FrmNewMap.resources
+C:\Users\_L_\Documents\GitHub\MapEditor\MapEditor\obj\Debug\MapEditor.AppSettings.resources

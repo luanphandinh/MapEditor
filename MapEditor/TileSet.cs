@@ -138,7 +138,7 @@ namespace MapEditor
         }
 
         #endregion
-        /////
+        //
         #region METHODS
         //lưu thông tin xuống file xml
         //cách đọc và ghi xml file
